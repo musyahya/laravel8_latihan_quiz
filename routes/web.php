@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CekRoleController;
+use App\Http\Controllers\Guru\DashboardController as GuruDashboard;
+use App\Http\Controllers\Murid\DashboardController as MuridDashboard;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +25,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', function () {
-    return view('guru/dashboard');
+Route::get('/cekrole', CekRoleController::class);
+
+Route::middleware(['auth','role:guru'])->group(function () {
+    Route::get('/dashboard/guru', GuruDashboard::class);
+});
+
+Route::middleware(['auth','role:murid'])->group(function () {
+    Route::get('/dashboard/murid', MuridDashboard::class);
 });
