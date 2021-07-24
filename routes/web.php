@@ -30,7 +30,7 @@ Route::get('/cekrole', CekRoleController::class);
 
 Route::middleware(['auth','role:guru'])->group(function () {
     Route::get('/dashboard/guru', GuruDashboard::class);
-    Route::resource('/quiz', QuizController::class);
+    Route::get('/quiz', QuizController::class);
 });
 
 Route::middleware(['auth','role:murid'])->group(function () {
