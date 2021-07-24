@@ -20,8 +20,6 @@
               <button wire:click="update({{$quiz_id}})" type="button" class="btn btn-primary">Update</button>
             </div>
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
       </div>
 @endif

@@ -18,6 +18,11 @@ class Quiz extends Component
         'nama' => 'required',
     ];
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function tambah()
     {        
         $this->tambah = true;
@@ -77,6 +82,7 @@ class Quiz extends Component
 
         session()->flash('sukses', 'Data berhasil dihapus.');
         $this->format();
+        $this->updatingSearch();
     }
 
     public function render()

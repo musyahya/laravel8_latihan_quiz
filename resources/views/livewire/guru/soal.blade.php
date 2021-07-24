@@ -4,7 +4,7 @@
     @include('adminlte/flash')
     @include('guru/soal/tambah')
     @include('guru/soal/edit')
-    {{-- @include('guru/quiz/hapus') --}}
+    @include('guru/soal/hapus')
 
     <button wire:click="tambah" class="btn btn-sm btn-primary mb-3">Tambah</button>
 
@@ -15,7 +15,7 @@
                     Soal {{$this->page}}
                     <div class="btn-group float-right">
                         <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-primary ml-2">Edit</button>
-                        <button class="btn btn-sm btn-danger ml-2">Hapus</button>
+                        <button wire:click="hapus({{$item->id}})" class="btn btn-sm btn-danger ml-2">Hapus</button>
                     </div>
                 </div>
                 <div class="card-body">

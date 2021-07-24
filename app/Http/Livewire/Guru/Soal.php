@@ -12,7 +12,7 @@ class Soal extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $tambah, $edit;
+    public $tambah, $edit, $hapus;
     public $soal, $pilihan_a, $pilihan_b, $pilihan_c, $pilihan_d, $pilihan_e, $jawaban, $soal_id;
 
     protected function rules()
@@ -26,6 +26,11 @@ class Soal extends Component
             'pilihan_e' => 'required',
             'jawaban' => ['required', Rule::in(['pilihan_a', 'pilihan_b', 'pilihan_c', 'pilihan_d', 'pilihan_e']),],
         ];
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
     public function tambah()
@@ -66,6 +71,21 @@ class Soal extends Component
         $this->soal_id = $soal->id;
     }
 
+    public function hapus(ModelsSoal $soal)
+    {
+        $this->hapus = true;
+        $this->soal_id = $soal->id;
+    }
+
+    public function delete(ModelsSoal $soal)
+    {
+        $soal->delete();
+
+        session()->flash('sukses', 'Data berhasil dihapus.');
+        $this->format();
+        $this->updatingSearch();
+    }
+
     public function update(ModelsSoal $soal)
     {
         $this->validate();
@@ -98,6 +118,7 @@ class Soal extends Component
     {
         $this->tambah = false;
         $this->edit = false;
+        $this->hapus = false;
 
         unset($this->soal);
         unset($this->pilihan_a);
@@ -105,5 +126,6 @@ class Soal extends Component
         unset($this->pilihan_c);
         unset($this->pilihan_d);
         unset($this->pilihan_e);
+        unset($this->soal_id);
     }
 }

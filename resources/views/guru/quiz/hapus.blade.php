@@ -16,8 +16,6 @@
               <button wire:click="delete({{$quiz_id}})" type="button" class="btn btn-primary">Hapus</button>
             </div>
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
       </div>
 @endif
