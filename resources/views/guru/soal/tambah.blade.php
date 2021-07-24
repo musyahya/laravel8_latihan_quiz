@@ -1,6 +1,6 @@
-@if ($tambah_soal)
+@if ($tambah)
     <div class="modal fade show" id="modal" style="display: block; padding-right: 17px;">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Tambah Soal</h4>
@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label for="jawaban">Jawaban</label>
                     <select wire:model="jawaban" class="form-control" id="jawaban">
-                        <option disabled selected>Jawaban</option>
+                        <option selected>Jawaban</option>
                         <option value="pilihan_a">Pilihan A</option>
                         <option value="pilihan_b">Pilihan B</option>
                         <option value="pilihan_c">Pilihan C</option>
@@ -57,8 +57,6 @@
               <button wire:click="simpan" type="button" class="btn btn-primary">Simpan</button>
             </div>
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
       </div>
 @endif

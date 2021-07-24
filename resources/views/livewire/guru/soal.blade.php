@@ -2,22 +2,23 @@
     <div class="col-12">
 
     @include('adminlte/flash')
-    {{-- @include('guru/quiz/tambah')
-    @include('guru/quiz/edit')
-    @include('guru/quiz/hapus') --}}
+    @include('guru/soal/tambah')
+    {{-- @include('guru/quiz/edit') --}}
+    {{-- @include('guru/quiz/hapus') --}}
 
-    @if ($soal->isNotEmpty())
-        @foreach ($soal as $item)
+    <button wire:click="tambah" class="btn btn-sm btn-primary mb-3">Tambah</button>
+
+    @if ($soal_quiz->isNotEmpty())
+        @foreach ($soal_quiz as $item)
             <div class="card">
                 <div class="card-header">
-                    Soal {{$loop->iteration}}
+                    Soal {{$this->page}}
                 </div>
                 <div class="card-body">
                     {{$item->soal}}
                 </div>
             </div>
             <div class="card {{($item->jawaban == 'pilihan_a') ? 'border border-success' : ''}}">
-            {{-- <div class="card"> --}}
                 <div class="card-header">
                     Pilihan A
                 </div>
@@ -59,7 +60,7 @@
             </div>
         @endforeach
 
-        {{$soal->links()}}
+        {{$soal_quiz->links()}}
     @else
         <div class="alert alert-danger" role="alert">
         Quiz tidak memiliki soal

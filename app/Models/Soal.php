@@ -10,7 +10,7 @@ class Soal extends Model
     use HasFactory;
 
     protected $table = 'soal';
-    protected $fillable = ['soal', 'pilihan_a', 'pilihan_b', 'pilihan_c', 'pilihan_d', 'pilihan_e', 'jawaban'];
+    protected $fillable = ['soal', 'pilihan_a', 'pilihan_b', 'pilihan_c', 'pilihan_d', 'pilihan_e', 'jawaban', 'quiz_id'];
 
     public function quiz()
     {

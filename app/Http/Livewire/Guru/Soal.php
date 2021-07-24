@@ -5,24 +5,69 @@ namespace App\Http\Livewire\Guru;
 use App\Models\Soal as ModelsSoal;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Validation\Rule;
 
 class Soal extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    protected $listeners = ['kirim_id_quiz'];
+    public $tambah;
+    public $soal, $pilihan_a, $pilihan_b, $pilihan_c, $pilihan_d, $pilihan_e, $jawaban;
 
-    public $quiz_id;
-
-    public function kirim_id_quiz($quiz_id)
+    protected function rules()
     {
-        $this->quiz_id = $quiz_id;
+        return [
+            'soal' => 'required',
+            'pilihan_a' => 'required',
+            'pilihan_b' => 'required',
+            'pilihan_c' => 'required',
+            'pilihan_d' => 'required',
+            'pilihan_e' => 'required',
+            'jawaban' => ['required', Rule::in(['pilihan_a', 'pilihan_b', 'pilihan_c', 'pilihan_d', 'pilihan_e']),],
+        ];
+    }
+
+    public function tambah()
+    {
+        $this->tambah = true;
+    }
+    
+    public function simpan()
+    {
+        $this->validate();
+        // dd(session('quiz_id'));
+
+        ModelsSoal::create([
+            'soal' => $this->soal,
+            'pilihan_a' => $this->pilihan_a,
+            'pilihan_b' => $this->pilihan_b,
+            'pilihan_c' => $this->pilihan_c,
+            'pilihan_d' => $this->pilihan_d,
+            'pilihan_e' => $this->pilihan_e,
+            'jawaban' => $this->jawaban,
+            'quiz_id' => session('quiz_id')
+        ]);
+
+        session()->flash('sukses', 'Data berhasil ditambahkan.');
+        $this->format();
     }
 
     public function render()
     {
-        $soal = ModelsSoal::where('quiz_id', session('quiz_id'))->paginate(1);
-        return view('livewire.guru.soal', compact('soal'));
+        $soal_quiz = ModelsSoal::where('quiz_id', session('quiz_id'))->paginate(1);
+        return view('livewire.guru.soal', compact('soal_quiz'));
+    }
+
+    public function format()
+    {
+        $this->tambah = false;
+
+        unset($this->soal);
+        unset($this->pilihan_a);
+        unset($this->pilihan_b);
+        unset($this->pilihan_c);
+        unset($this->pilihan_d);
+        unset($this->pilihan_e);
     }
 }
