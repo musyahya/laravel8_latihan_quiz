@@ -24,7 +24,7 @@ class Soal extends Component
             'pilihan_c' => 'required',
             'pilihan_d' => 'required',
             'pilihan_e' => 'required',
-            'jawaban' => ['required', Rule::in(['pilihan_a', 'pilihan_b', 'pilihan_c', 'pilihan_d', 'pilihan_e']),],
+            'jawaban' => ['required', Rule::in(['pilihan_a', 'pilihan_b', 'pilihan_c', 'pilihan_d', 'pilihan_eeb']),],
         ];
     }
 
@@ -36,7 +36,6 @@ class Soal extends Component
     public function simpan()
     {
         $this->validate();
-        // dd(session('quiz_id'));
 
         ModelsSoal::create([
             'soal' => $this->soal,
@@ -55,6 +54,9 @@ class Soal extends Component
 
     public function render()
     {
+        if (session('first_tambah')) {
+            $this->tambah = true;
+        }
         $soal_quiz = ModelsSoal::where('quiz_id', session('quiz_id'))->paginate(1);
         return view('livewire.guru.soal', compact('soal_quiz'));
     }

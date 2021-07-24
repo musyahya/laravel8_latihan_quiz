@@ -27,12 +27,15 @@ class Quiz extends Component
     {
         $this->validate();
 
-        ModelsQuiz::create([
+        $quiz = ModelsQuiz::create([
             'nama' => $this->nama
         ]);
 
-        session()->flash('sukses', 'Data berhasil ditambahkan.');
+        session()->flash('first_tambah');
         $this->format();
+
+        session(['quiz_id' => $quiz->id]);
+        redirect('/soal');
     }
 
     public function edit(ModelsQuiz $quiz)
