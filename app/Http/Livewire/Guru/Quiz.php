@@ -46,11 +46,11 @@ class Quiz extends Component
         $this->quiz_id = $quiz->id;
     }
 
-    public function update()
+    public function update(ModelsQuiz $quiz)
     {
         $this->validate();
 
-        ModelsQuiz::whereId($this->quiz_id)->update([
+        $quiz->update([
             'nama' => $this->nama
         ]);
 

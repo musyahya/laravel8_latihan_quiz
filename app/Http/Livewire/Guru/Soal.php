@@ -12,8 +12,8 @@ class Soal extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $tambah;
-    public $soal, $pilihan_a, $pilihan_b, $pilihan_c, $pilihan_d, $pilihan_e, $jawaban;
+    public $tambah, $edit;
+    public $soal, $pilihan_a, $pilihan_b, $pilihan_c, $pilihan_d, $pilihan_e, $jawaban, $soal_id;
 
     protected function rules()
     {
@@ -24,7 +24,7 @@ class Soal extends Component
             'pilihan_c' => 'required',
             'pilihan_d' => 'required',
             'pilihan_e' => 'required',
-            'jawaban' => ['required', Rule::in(['pilihan_a', 'pilihan_b', 'pilihan_c', 'pilihan_d', 'pilihan_eeb']),],
+            'jawaban' => ['required', Rule::in(['pilihan_a', 'pilihan_b', 'pilihan_c', 'pilihan_d', 'pilihan_e']),],
         ];
     }
 
@@ -52,6 +52,39 @@ class Soal extends Component
         $this->format();
     }
 
+    public function edit(ModelsSoal $soal)
+    {
+        $this->edit = true;
+
+        $this->soal = $soal->soal;
+        $this->pilihan_a = $soal->pilihan_a;
+        $this->pilihan_b = $soal->pilihan_b;
+        $this->pilihan_c = $soal->pilihan_c;
+        $this->pilihan_d = $soal->pilihan_d;
+        $this->pilihan_e = $soal->pilihan_e;
+        $this->jawaban = $soal->jawaban;
+        $this->soal_id = $soal->id;
+    }
+
+    public function update(ModelsSoal $soal)
+    {
+        $this->validate();
+
+        $soal->update([
+            'soal' => $this->soal,
+            'pilihan_a' => $this->pilihan_a,
+            'pilihan_b' => $this->pilihan_b,
+            'pilihan_c' => $this->pilihan_c,
+            'pilihan_d' => $this->pilihan_d,
+            'pilihan_e' => $this->pilihan_e,
+            'jawaban' => $this->jawaban,
+            'quiz_id' => session('quiz_id')
+        ]);
+
+        session()->flash('sukses', 'Data berhasil diubah.');
+        $this->format();
+    }
+
     public function render()
     {
         if (session('first_tambah')) {
@@ -64,6 +97,7 @@ class Soal extends Component
     public function format()
     {
         $this->tambah = false;
+        $this->edit = false;
 
         unset($this->soal);
         unset($this->pilihan_a);
