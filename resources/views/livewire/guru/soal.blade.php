@@ -5,8 +5,15 @@
     @include('guru/soal/tambah')
     @include('guru/soal/edit')
     @include('guru/soal/hapus')
-
-    <button wire:click="tambah" class="btn btn-sm btn-primary mb-3">Tambah</button>
+    
+    <div class="row">
+        <div class="col-md-9">
+            <button wire:click="tambah" class="btn btn-sm btn-primary mb-3">Tambah</button>
+        </div>
+        <div class="col-md-3">
+            <input wire:model="search" type="search" class="form-control" placeholder="Search">
+        </div>
+    </div>
 
     @if ($soal_quiz->isNotEmpty())
         @foreach ($soal_quiz as $item)

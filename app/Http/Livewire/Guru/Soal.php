@@ -12,7 +12,7 @@ class Soal extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $tambah, $edit, $hapus;
+    public $tambah, $edit, $hapus, $search;
     public $soal, $pilihan_a, $pilihan_b, $pilihan_c, $pilihan_d, $pilihan_e, $jawaban, $soal_id;
 
     protected function rules()
@@ -110,7 +110,13 @@ class Soal extends Component
         if (session('first_tambah')) {
             $this->tambah = true;
         }
-        $soal_quiz = ModelsSoal::where('quiz_id', session('quiz_id'))->paginate(1);
+
+        if ($this->search) {
+            $soal_quiz = ModelsSoal::where('quiz_id', session('quiz_id'))->where('soal', 'like', '%'. $this->search .'%')->paginate(1);
+        } else {
+            $soal_quiz = ModelsSoal::where('quiz_id', session('quiz_id'))->paginate(1);
+        }
+        
         return view('livewire.guru.soal', compact('soal_quiz'));
     }
 
