@@ -13,20 +13,19 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="/cekrole" class="nav-link">
+            <a href="/cekrole" class="nav-link @yield('active-dashboard')">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <li class="nav-header">EXAMPLES</li>
+          <li class="nav-header">MASTER</li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="/quiz" class="nav-link @yield('active-quiz')">
+              <i class="fas fa-copy"></i>
               <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
+                Quiz
               </p>
             </a>
           </li>

@@ -1,4 +1,6 @@
 @extends('adminlte/app')
+@section('title', 'Dashboard')
+@section('active-dashboard', 'active')
 
 @section('content')
      <!-- Small boxes (Stat box) -->
