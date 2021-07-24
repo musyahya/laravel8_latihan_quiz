@@ -11,7 +11,7 @@ class Quiz extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $tambah, $edit, $hapus;
+    public $tambah, $edit, $hapus, $search;
     public $nama, $quiz_id;
 
     protected $rules = [
@@ -87,7 +87,11 @@ class Quiz extends Component
 
     public function render()
     {
-        $quiz = ModelsQuiz::paginate(5);
+        if ($this->search) {
+            $quiz = ModelsQuiz::where('nama', 'like', '%'. $this->search .'%')->paginate(5);
+        } else {
+            $quiz = ModelsQuiz::paginate(5);
+        }
         
         return view('livewire.guru.quiz', compact('quiz'));
     }
