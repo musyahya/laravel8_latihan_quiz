@@ -3,6 +3,7 @@
 use App\Http\Controllers\CekRoleController;
 use App\Http\Controllers\Guru\DashboardController as GuruDashboard;
 use App\Http\Controllers\Guru\QuizController;
+use App\Http\Controllers\Guru\SoalController;
 use App\Http\Controllers\Murid\DashboardController as MuridDashboard;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,7 @@ Route::get('/cekrole', CekRoleController::class);
 Route::middleware(['auth','role:guru'])->group(function () {
     Route::get('/dashboard/guru', GuruDashboard::class);
     Route::get('/quiz', QuizController::class);
+    Route::get('/soal', SoalController::class);
 });
 
 Route::middleware(['auth','role:murid'])->group(function () {

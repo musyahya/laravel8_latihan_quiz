@@ -19,7 +19,7 @@ class Quiz extends Component
     ];
 
     public function tambah()
-    {
+    {        
         $this->tambah = true;
     }
 
@@ -62,6 +62,12 @@ class Quiz extends Component
         $this->quiz_id = $quiz->id;
     }
 
+    public function lihat_soal($id)
+    {
+        session(['quiz_id' => $id]);
+        redirect('/soal');
+    }
+
     public function delete(ModelsQuiz $quiz)
     {
         $quiz->delete();
@@ -73,6 +79,7 @@ class Quiz extends Component
     public function render()
     {
         $quiz = ModelsQuiz::paginate(5);
+        
         return view('livewire.guru.quiz', compact('quiz'));
     }
 
@@ -81,6 +88,10 @@ class Quiz extends Component
         $this->tambah = false;
         $this->edit = false;
         $this->hapus = false;
+
+        $this->tambah_soal = false;
+
+        unset($this->jumlah);
         unset($this->nama);
         unset($this->quiz_id);
     }

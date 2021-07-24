@@ -1,6 +1,6 @@
 @if ($tambah)
     <div class="modal fade show" id="modal" style="display: block; padding-right: 17px;">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Tambah Quiz</h4>

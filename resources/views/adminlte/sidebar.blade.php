@@ -30,6 +30,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="/soal" class="nav-link @yield('active-soal')">
+              <i class="fas fa-copy"></i>
+              <p>
+                Soal
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
