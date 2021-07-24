@@ -11,7 +11,7 @@ class Quiz extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $tambah, $edit;
+    public $tambah, $edit, $hapus;
     public $nama, $quiz_id;
 
     protected $rules = [
@@ -55,6 +55,21 @@ class Quiz extends Component
         $this->format();
     }
 
+    public function hapus(ModelsQuiz $quiz)
+    {
+        $this->hapus = true;
+
+        $this->quiz_id = $quiz->id;
+    }
+
+    public function delete(ModelsQuiz $quiz)
+    {
+        $quiz->delete();
+
+        session()->flash('sukses', 'Data berhasil dihapus.');
+        $this->format();
+    }
+
     public function render()
     {
         $quiz = ModelsQuiz::paginate(5);
@@ -65,6 +80,7 @@ class Quiz extends Component
     {
         $this->tambah = false;
         $this->edit = false;
+        $this->hapus = false;
         unset($this->nama);
         unset($this->quiz_id);
     }

@@ -4,6 +4,7 @@
     @include('adminlte/flash')
     @include('guru/quiz/tambah')
     @include('guru/quiz/edit')
+    @include('guru/quiz/hapus')
 
     <div class="card">
         <div class="card-header">
@@ -28,7 +29,7 @@
                 <tr>
                 <th>No</th>
                 <th>Nama Quiz</th>
-                <th>Aksi</th>
+                <th width="20%">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,7 +41,7 @@
                         <div class="btn-group">
                             <button class="btn btn-sm btn-info mr-2">Lihat Soal</button>
                             <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-primary mr-2">Edit</button>
-                            <button class="btn btn-sm btn-danger">Hapus</button>
+                            <button wire:click="hapus({{$item->id}})" class="btn btn-sm btn-danger">Hapus</button>
                         </div>
                     </td>
                     </tr>
