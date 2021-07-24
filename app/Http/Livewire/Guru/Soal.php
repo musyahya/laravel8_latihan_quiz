@@ -22,7 +22,7 @@ class Soal extends Component
 
     public function render()
     {
-        $soal = ModelsSoal::where('quiz_id', session('quiz_id'))->paginate(5);
+        $soal = ModelsSoal::where('quiz_id', session('quiz_id'))->paginate(1);
         return view('livewire.guru.soal', compact('soal'));
     }
 }

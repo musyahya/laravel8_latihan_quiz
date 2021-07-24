@@ -6,62 +6,65 @@
     @include('guru/quiz/edit')
     @include('guru/quiz/hapus') --}}
 
-    <div class="card">
-        <div class="card-header">
-        <button wire:click="tambah" class="btn btn-sm btn-primary">Tambah</button>
-
-        <div class="card-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
-            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-default">
-                <i class="fas fa-search"></i>
-                </button>
+    @if ($soal->isNotEmpty())
+        @foreach ($soal as $item)
+            <div class="card">
+                <div class="card-header">
+                    Soal {{$loop->iteration}}
+                </div>
+                <div class="card-body">
+                    {{$item->soal}}
+                </div>
             </div>
+            <div class="card {{($item->jawaban == 'pilihan_a') ? 'border border-success' : ''}}">
+            {{-- <div class="card"> --}}
+                <div class="card-header">
+                    Pilihan A
+                </div>
+                <div class="card-body">
+                    {{$item->pilihan_a}}
+                </div>
             </div>
-        </div>
-        </div>
-        <div class="card-body table-responsive">
-
-        @if ($soal->isNotEmpty())
-
-            <table class="table table-hover text-nowrap">
-            <thead>
-                <tr>
-                <th>No</th>
-                <th>Soal</th>
-                <th width="20%">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($soal as $item)
-                    <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$item->soal}}</td>
-                    <td>
-                        <div class="btn-group">
-                            <button class="btn btn-sm btn-info mr-2">Lihat Soal</button>
-                            <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-primary mr-2">Edit</button>
-                            <button wire:click="hapus({{$item->id}})" class="btn btn-sm btn-danger">Hapus</button>
-                        </div>
-                    </td>
-                    </tr>
-                @endforeach
-            </tbody>
-            </table>
-        @else
-
-            <div class="alert alert-danger" role="alert">
-            Quiz tidak memiliki soal
+            <div class="card {{($item->jawaban == 'pilihan_b') ? 'border border-success' : ''}}">
+                <div class="card-header">
+                    Pilihan B
+                </div>
+                <div class="card-body">
+                    {{$item->pilihan_b}}
+                </div>
             </div>
+            <div class="card {{($item->jawaban == 'pilihan_c') ? 'border border-success' : ''}}">
+                <div class="card-header">
+                    Pilihan C
+                </div>
+                <div class="card-body">
+                    {{$item->pilihan_c}}
+                </div>
+            </div>
+            <div class="card {{($item->jawaban == 'pilihan_d') ? 'border border-success' : ''}}">
+                <div class="card-header">
+                    Pilihan D
+                </div>
+                <div class="card-body">
+                    {{$item->pilihan_d}}
+                </div>
+            </div>
+            <div class="card {{($item->jawaban == 'pilihan_e') ? 'border border-success' : ''}}">
+                <div class="card-header">
+                    Pilihan E
+                </div>
+                <div class="card-body">
+                    {{$item->pilihan_e}}
+                </div>
+            </div>
+        @endforeach
 
-        @endif
-
+        {{$soal->links()}}
+    @else
+        <div class="alert alert-danger" role="alert">
+        Quiz tidak memiliki soal
         </div>
-    </div>
-
-    {{$soal->links()}}
+    @endif
 
     </div>
 </div>
