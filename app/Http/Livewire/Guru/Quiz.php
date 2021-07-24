@@ -11,8 +11,8 @@ class Quiz extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $tambah;
-    public $nama;
+    public $tambah, $edit;
+    public $nama, $quiz_id;
 
     protected $rules = [
         'nama' => 'required',
@@ -35,6 +35,26 @@ class Quiz extends Component
         $this->format();
     }
 
+    public function edit(ModelsQuiz $quiz)
+    {
+        $this->edit = true;
+
+        $this->nama = $quiz->nama;
+        $this->quiz_id = $quiz->id;
+    }
+
+    public function update()
+    {
+        $this->validate();
+
+        ModelsQuiz::whereId($this->quiz_id)->update([
+            'nama' => $this->nama
+        ]);
+
+        session()->flash('sukses', 'Data berhasil diubah.');
+        $this->format();
+    }
+
     public function render()
     {
         $quiz = ModelsQuiz::paginate(5);
@@ -44,6 +64,8 @@ class Quiz extends Component
     public function format()
     {
         $this->tambah = false;
+        $this->edit = false;
         unset($this->nama);
+        unset($this->quiz_id);
     }
 }

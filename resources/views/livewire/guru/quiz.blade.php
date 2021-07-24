@@ -3,6 +3,7 @@
 
     @include('adminlte/flash')
     @include('guru/quiz/tambah')
+    @include('guru/quiz/edit')
 
     <div class="card">
         <div class="card-header">
@@ -38,7 +39,7 @@
                     <td>
                         <div class="btn-group">
                             <button class="btn btn-sm btn-info mr-2">Lihat Soal</button>
-                            <button class="btn btn-sm btn-primary mr-2">Edit</button>
+                            <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-primary mr-2">Edit</button>
                             <button class="btn btn-sm btn-danger">Hapus</button>
                         </div>
                     </td>
