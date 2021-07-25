@@ -2,10 +2,10 @@
     <div class="col-12">
 
         @include('adminlte/flash')
-        {{-- @include('guru/quiz/tambah') --}}
-        {{-- @include('guru/quiz/edit') --}}
-        {{-- @include('guru/quiz/hapus') --}}
-
+        @include('guru/kelompok_belajar/tambah')
+        {{-- @include('guru/kelompok_belajar/edit') --}}
+        {{-- @include('guru/kelompok_belajar/hapus') --}}
+        
         <div class="card">
             <div class="card-header">
             <button wire:click="tambah" class="btn btn-sm btn-primary">Tambah</button>

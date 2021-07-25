@@ -581,3 +581,47 @@
         </div>
         <!-- /.row (main row) -->
 @endsection
+
+@section('header')
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="/adminlte/plugins/jqvmap/jqvmap.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="/adminlte/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="/adminlte/plugins/summernote/summernote-bs4.min.css">
+@endsection
+
+@section('script')
+  <!-- jQuery UI 1.11.4 -->
+  <script src="/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- ChartJS -->
+  <script src="/adminlte/plugins/chart.js/Chart.min.js"></script>
+  <!-- Sparkline -->
+  <script src="/adminlte/plugins/sparklines/sparkline.js"></script>
+  <!-- JQVMap -->
+  <script src="/adminlte/plugins/jqvmap/jquery.vmap.min.js"></script>
+  <script src="/adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+  <!-- jQuery Knob Chart -->
+  <script src="/adminlte/plugins/jquery-knob/jquery.knob.min.js"></script>
+  <!-- daterangepicker -->
+  <script src="/adminlte/plugins/moment/moment.min.js"></script>
+  <script src="/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <!-- Summernote -->
+  <script src="/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+  <script src="/adminlte/dist/js/pages/dashboard.js"></script>
+@endsection
