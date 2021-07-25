@@ -2,7 +2,7 @@
     <div class="col-12">
 
         @include('adminlte/flash')
-        {{-- @include('guru/kelompok_belajar_murid/tambah') --}}
+        @include('guru/kelompok_belajar_murid/tambah')
         {{-- @include('guru/kelompok_belajar_murid/edit') --}}
         {{-- @include('guru/kelompok_belajar_murid/hapus') --}}
         
@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                   @foreach ($kelompok_belajar_murid->user as $item)
+                  @forelse ($kelompok_belajar_murid->user as $item)
                         <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$item->name}}</td>
@@ -43,7 +43,11 @@
                             </div>
                         </td>
                         </tr>
-                   @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="3" class="text-center"><strong class="text-danger">Tidak ada data</strong></td>
+                        </tr>
+                    @endforelse
                 </tbody>
                 </table>
 
