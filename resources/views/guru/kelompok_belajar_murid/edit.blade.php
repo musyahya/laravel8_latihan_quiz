@@ -13,7 +13,10 @@
                   <label for="murid">Murid</label>
                   <select wire:model="murid" class="form-control" id="murid" multiple>
                     @foreach ($murid_all as $item)
-                        <option value="{{$item->id}}">{{$item->name}}</option>
+                        @foreach ($kelompok_belajar_murid->user as $user)
+                            <option value="{{$item->id}}" {{($item->id == $user->id ? 'active' : '')}}>{{$item->name}}</option>
+                            @break
+                        @endforeach
                     @endforeach
                     </select>
                    @error('murid') <small class="text-danger">{{ $message }}</small> @enderror
