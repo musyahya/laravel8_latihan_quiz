@@ -11,7 +11,7 @@ class KelompokBelajar extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $tambah, $edit, $hapus;
+    public $tambah, $edit, $hapus, $search;
     public $nama, $kelompok_belajar_id;
 
     protected function rules()
@@ -77,7 +77,12 @@ class KelompokBelajar extends Component
 
     public function render()
     {
-        $kelompok_belajar = ModelsKelompokBelajar::paginate(1);
+        if ($this->search) {
+            $kelompok_belajar = ModelsKelompokBelajar::where('nama', 'like', '%'. $this->search .'%')->paginate(5);
+        } else {
+            $kelompok_belajar = ModelsKelompokBelajar::paginate(5);
+        }
+        
         return view('livewire.guru.kelompok-belajar', compact('kelompok_belajar'));
     }
 
