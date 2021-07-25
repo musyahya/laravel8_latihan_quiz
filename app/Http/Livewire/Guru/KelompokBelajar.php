@@ -75,6 +75,12 @@ class KelompokBelajar extends Component
         $this->updatingSearch();
     }
 
+    public function lihat_murid($id)
+    {
+        session(['pilih_kelompok_belajar' => $id]);
+        redirect('/kelompok_belajar_murid');
+    }
+
     public function render()
     {
         if ($this->search) {

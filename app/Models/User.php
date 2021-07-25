@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     public function kelompok_belajar()
     {
-        return $this->belongsToMany(KelompokBelajar::class);
+        return $this->belongsToMany(KelompokBelajar::class, 'kelompok_belajar_user', 'user_id', 'kelompok_belajar_id');
     }
 }

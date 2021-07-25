@@ -15,8 +15,8 @@ class CreateKelompokBelajarUserTable extends Migration
     {
         Schema::create('kelompok_belajar_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kelompok_belajar_id')->constrained('kelompok_belajar');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('kelompok_belajar_id')->constrained('kelompok_belajar')->onDelete('cascade');;
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');;
         });
     }
 

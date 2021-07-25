@@ -14,6 +14,6 @@ class KelompokBelajar extends Model
 
     public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'kelompok_belajar_user', 'kelompok_belajar_id', 'user_id');
     }
 }
