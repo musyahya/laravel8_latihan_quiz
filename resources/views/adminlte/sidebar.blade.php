@@ -30,6 +30,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="/kelompok_belajar" class="nav-link @yield('active-quiz')">
+              <i class="fas fa-users"></i>
+              <p>
+                Kelompok Belajar
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>

@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             QuizSeeder::class,
-            SoalSeeder::class
+            SoalSeeder::class,
+            KelompokBelajarSeeder::class
         ]);
     }
 }
