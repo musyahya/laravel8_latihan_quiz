@@ -11,7 +11,7 @@ class KelompokBelajar extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $tambah, $edit;
+    public $tambah, $edit, $hapus;
     public $nama, $kelompok_belajar_id;
 
     protected function rules()
@@ -19,6 +19,11 @@ class KelompokBelajar extends Component
         return [
             'nama' => 'required',
         ];
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
     public function tambah()
@@ -55,9 +60,24 @@ class KelompokBelajar extends Component
         $this->format();
     }
 
+    public function hapus(ModelsKelompokBelajar $kelompokBelajar)
+    {
+        $this->hapus = true;
+        $this->kelompok_belajar_id = $kelompokBelajar->id;
+    }
+
+    public function delete(ModelsKelompokBelajar $kelompokBelajar)
+    {
+        $kelompokBelajar->delete();
+
+        session()->flash('sukses', 'Data berhasil dihapus.');
+        $this->format();
+        $this->updatingSearch();
+    }
+
     public function render()
     {
-        $kelompok_belajar = ModelsKelompokBelajar::paginate(5);
+        $kelompok_belajar = ModelsKelompokBelajar::paginate(1);
         return view('livewire.guru.kelompok-belajar', compact('kelompok_belajar'));
     }
 
@@ -65,6 +85,7 @@ class KelompokBelajar extends Component
     {
         $this->tambah = false;
         $this->edit = false;
+        $this->hapus = false;
 
         unset($this->nama);
         unset($this->kelompok_belajar_id);
