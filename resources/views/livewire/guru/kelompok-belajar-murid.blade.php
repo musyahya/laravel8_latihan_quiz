@@ -3,12 +3,13 @@
 
         @include('adminlte/flash')
         @include('guru/kelompok_belajar_murid/tambah')
-        {{-- @include('guru/kelompok_belajar_murid/edit') --}}
+        @include('guru/kelompok_belajar_murid/edit')
         {{-- @include('guru/kelompok_belajar_murid/hapus') --}}
         
         <div class="card">
             <div class="card-header">
-            <button wire:click="tambah" class="btn btn-sm btn-primary">Tambah</button>
+            <button wire:click="tambah" class="btn btn-sm btn-primary mr-2">Tambah</button>
+            <button wire:click="edit" class="btn btn-sm btn-info">Edit</button>
 
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
