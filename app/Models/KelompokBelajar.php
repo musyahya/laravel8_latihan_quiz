@@ -11,4 +11,9 @@ class KelompokBelajar extends Model
 
     protected $table = 'kelompok_belajar';
     protected $fillable = ['nama'];
+
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
