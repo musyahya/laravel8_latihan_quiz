@@ -4,7 +4,7 @@
         @include('adminlte/flash')
         @include('guru/kelompok_belajar_murid/tambah')
         @include('guru/kelompok_belajar_murid/edit')
-        {{-- @include('guru/kelompok_belajar_murid/hapus') --}}
+        @include('guru/kelompok_belajar_murid/hapus')
         
         <div class="card">
             <div class="card-header">

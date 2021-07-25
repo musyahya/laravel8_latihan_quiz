@@ -8,8 +8,8 @@ use Livewire\Component;
 
 class KelompokBelajarMurid extends Component
 {
-    public $tambah, $edit;
-    public $murid;
+    public $tambah, $edit, $hapus;
+    public $murid, $murid_id;
 
     protected function rules()
     {
@@ -50,6 +50,21 @@ class KelompokBelajarMurid extends Component
         $this->format();
     }
 
+    public function hapus(User $user)
+    {
+        $this->hapus = true;
+        $this->murid_id = $user->id;
+    }
+
+    public function delete(User $user)
+    {
+        $kelompok_belajar = KelompokBelajar::find(session('pilih_kelompok_belajar'));
+        $kelompok_belajar->user()->detach($user->id);
+
+        session()->flash('sukses', 'Data berhasil dihapus.');
+        $this->format();
+    }
+
     public function render()
     {
         if ($this->tambah || $this->edit) {
@@ -66,5 +81,9 @@ class KelompokBelajarMurid extends Component
     {
         $this->tambah = false;
         $this->edit = false;
+        $this->hapus = false;
+
+        unset($this->murid);
+        unset($this->murid_id);
     }
 }
