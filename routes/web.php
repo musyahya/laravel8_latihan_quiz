@@ -21,15 +21,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/login');
+// Route::get('/', function () {
+//     return redirect('/login');
+// });
+Route::get('/asd', function () {
+    return view('asd');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/cekrole', CekRoleController::class);
+Route::get('/', CekRoleController::class);
+// Route::get('/cekrole', CekRoleController::class);
 
 Route::middleware(['auth','role:guru'])->group(function () {
     Route::get('/dashboard/guru', GuruDashboard::class);

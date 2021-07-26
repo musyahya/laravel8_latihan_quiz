@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @include('adminlte/header')
     @yield('header')
+    @include('adminlte/header')
     @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
