@@ -11,12 +11,9 @@
             <div class="modal-body">
               <div class="form-group">
                   <label for="murid">Murid</label>
-                  <select wire:model="murid" class="form-control" id="murid" multiple>
+                  <select wire:model.defer="murid" class="form-control" id="murid" multiple size="10">
                     @foreach ($murid_all as $item)
-                        @foreach ($kelompok_belajar_murid->user as $user)
-                            <option value="{{$item->id}}" {{($item->id == $user->id ? 'selected' : '')}}>{{$item->name}}</option>
-                            @break
-                        @endforeach
+                        <option value="{{$item->id}}">{{$item->name}}</option>
                     @endforeach
                     </select>
                    @error('murid') <small class="text-danger">{{ $message }}</small> @enderror

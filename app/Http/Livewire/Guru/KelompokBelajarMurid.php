@@ -67,8 +67,16 @@ class KelompokBelajarMurid extends Component
 
     public function render()
     {
-        if ($this->tambah || $this->edit) {
+        if ($this->tambah) {
             $murid_all = User::role('murid')->get(); 
+        }elseif ($this->edit) {
+            $murid_all = User::role('murid')->get();
+            $kelompok_belajar = KelompokBelajar::find(session('pilih_kelompok_belajar'));
+            $kelompok_belajar = $kelompok_belajar->user;
+            $kelompok_belajar = $kelompok_belajar->map(function($item){
+                return $item->id;
+            });
+            $this->murid = $kelompok_belajar;
         } else {
             $murid_all = false;
         }
