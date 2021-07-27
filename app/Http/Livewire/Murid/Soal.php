@@ -11,6 +11,13 @@ class Soal extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $jawab;
+
+    public function jawab($pilihan)
+    {
+        $this->jawab = $pilihan;
+    }
+
     public function updatingSearch()
     {
         $this->resetPage();

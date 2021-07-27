@@ -27,7 +27,7 @@
                     {{$item->soal}}
                 </div>
             </div>
-            <div class="card {{($item->jawaban == 'pilihan_a') ? 'border border-success' : ''}}">
+            <div wire:click="jawab('pilihan_a')" class="card pointer {{($jawab == 'pilihan_a') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan A
                 </div>
@@ -35,7 +35,7 @@
                     {{$item->pilihan_a}}
                 </div>
             </div>
-            <div class="card {{($item->jawaban == 'pilihan_b') ? 'border border-success' : ''}}">
+            <div wire:click="jawab('pilihan_b')" class="card pointer {{($jawab == 'pilihan_b') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan B
                 </div>
@@ -43,7 +43,7 @@
                     {{$item->pilihan_b}}
                 </div>
             </div>
-            <div class="card {{($item->jawaban == 'pilihan_c') ? 'border border-success' : ''}}">
+            <div wire:click="jawab('pilihan_c')" class="card pointer {{($jawab == 'pilihan_c') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan C
                 </div>
@@ -51,7 +51,7 @@
                     {{$item->pilihan_c}}
                 </div>
             </div>
-            <div class="card {{($item->jawaban == 'pilihan_d') ? 'border border-success' : ''}}">
+            <div wire:click="jawab('pilihan_d')" class="card pointer {{($jawab == 'pilihan_d') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan D
                 </div>
@@ -59,7 +59,7 @@
                     {{$item->pilihan_d}}
                 </div>
             </div>
-            <div class="card {{($item->jawaban == 'pilihan_e') ? 'border border-success' : ''}}">
+            <div wire:click="jawab('pilihan_e')" class="card pointer {{($jawab == 'pilihan_e') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan E
                 </div>

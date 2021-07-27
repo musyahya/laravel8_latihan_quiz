@@ -4,6 +4,7 @@
 <head>
     @yield('header')
     @include('adminlte/header')
+    <link rel="stylesheet" href="{{asset('css/mystyle.css')}}">
     @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
