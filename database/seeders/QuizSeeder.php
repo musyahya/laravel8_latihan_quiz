@@ -16,16 +16,11 @@ class QuizSeeder extends Seeder
     {
         $quiz = Quiz::create([
             'nama' => 'quiz matamatika',
-            'status' => '1'
+            'status' => '1',
+            'guru_id' => '1'
         ]);
 
         $quiz->murid()->attach([2,3]);
-        
-        $quiz = Quiz::create([
-            'nama' => 'asd',
-            'status' => '1'
-        ]);
 
-        $quiz->murid()->attach([2,3]);
     }
 }

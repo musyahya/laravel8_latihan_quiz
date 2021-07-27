@@ -20,12 +20,12 @@ class Quiz extends Component
             ->where('quiz_id', session('quiz_id'))
             ->where('murid_id', auth()->id())
             ->first();
-        if ($cek->status == 1) {
+        if ($cek->status == 0) {
+            session(['quiz_id' => $id]);
+            redirect('/soal/murid');
+        }else {
             session()->flash('gagal', 'Quiz sudah pernah dikerjakan.');
             redirect('/quiz/murid');
-        }else {
-            session(['quiz_id' => $id]);
-            redirect('/soal');
         }
     }
 

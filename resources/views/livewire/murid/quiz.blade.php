@@ -39,7 +39,7 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$item->nama}}</td>
                             <td>{{$item->benar}}</td>
-                            <td>{{$item->nilai}}</td>
+                            <td>{{$item->nilai}} / 100</td>
                             <td>
                                 @if ($item->status == 1)
                                     <span class="badge badge-success">Selesai dikerjakan</span>

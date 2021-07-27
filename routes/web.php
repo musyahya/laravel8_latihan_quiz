@@ -50,5 +50,5 @@ Route::middleware(['auth','role:guru'])->group(function () {
 Route::middleware(['auth','role:murid'])->group(function () {
     Route::get('/dashboard/murid', MuridDashboard::class);
     Route::get('/quiz/murid', MuridQuiz::class);
-    Route::get('/soal', MuridSoal::class);
+    Route::get('/soal/murid', MuridSoal::class);
 });

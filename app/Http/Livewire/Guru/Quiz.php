@@ -34,6 +34,7 @@ class Quiz extends Component
 
         $quiz = ModelsQuiz::create([
             'nama' => $this->nama,
+            'guru_id' => auth()->id(),
             'status' => '1'
         ]);
 
@@ -95,9 +96,9 @@ class Quiz extends Component
     public function render()
     {
         if ($this->search) {
-            $quiz = ModelsQuiz::where('nama', 'like', '%'. $this->search .'%')->paginate(5);
+            $quiz = ModelsQuiz::where('guru_id', auth()->id())->where('nama', 'like', '%'. $this->search .'%')->paginate(5);
         } else {
-            $quiz = ModelsQuiz::paginate(5);
+            $quiz = ModelsQuiz::where('guru_id', auth()->id())->paginate(5);
         }
         
         return view('livewire.guru.quiz', compact('quiz'));

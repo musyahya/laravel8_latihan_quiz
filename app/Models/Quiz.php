@@ -10,7 +10,7 @@ class Quiz extends Model
     use HasFactory;
     
     protected $table = 'quiz';
-    protected $fillable = ['nama', 'status'];
+    protected $fillable = ['nama', 'status', 'guru_id'];
 
     public function soal()
     {
@@ -20,5 +20,10 @@ class Quiz extends Model
     public function murid()
     {
         return $this->belongsToMany(User::class, 'quiz_murid', 'quiz_id', 'murid_id');
+    }
+
+    public function guru()
+    {
+        return $this->belongsTo(User::class, 'guru_id');;
     }
 }
