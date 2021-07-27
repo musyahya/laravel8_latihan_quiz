@@ -35,6 +35,9 @@
                         <tr>
                         <th>No</th>
                         <th>Nama Murid</th>
+                        <th>Status</th>
+                        <th>Benar</th>
+                        <th>Nilai</th>
                         <th width="20%">Aksi</th>
                         </tr>
                     </thead>
@@ -43,6 +46,15 @@
                             <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$item->name}}</td>
+                            <td>
+                                @if ($item->status == 1)
+                                    <span class="badge badge-success">Sudah mengerjakan quiz</span>
+                                @else
+                                    <span class="badge badge-danger">Belum mengerjakan quiz</span>
+                                @endif
+                            </td>
+                            <td>{{$item->benar}}</td>
+                            <td>{{$item->nilai}} / 100</td>
                             <td>
                                 <div class="btn-group">
                                     <button wire:click="hapus({{$item->id}})" class="btn btn-sm btn-danger">Hapus</button>

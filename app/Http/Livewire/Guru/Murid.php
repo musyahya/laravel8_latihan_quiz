@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Guru;
 
 use App\Models\Quiz;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -93,11 +94,20 @@ class Murid extends Component
         }
 
         if ($this->search) {
-            $murid_quiz = $quiz->murid()->where('name', 'like', '%'. $this->search .'%')->paginate(5);
+            $murid_quiz = DB::table('quiz_murid')
+                ->join('users', 'quiz_murid.murid_id', '=', 'users.id')
+                ->where('quiz_murid.quiz_id', session('quiz_id'))
+                ->where('users.name', 'like', '%'. $this->search .'%')
+                ->select('quiz_murid.*', 'users.name')
+                ->paginate(5);
         } else {
-            $murid_quiz = $quiz->murid()->paginate(5);
+            $murid_quiz = DB::table('quiz_murid')
+                ->join('users', 'quiz_murid.murid_id', '=', 'users.id')
+                ->where('quiz_murid.quiz_id', session('quiz_id'))
+                ->select('quiz_murid.*', 'users.name')
+                ->paginate(5);
         }
-
+        
         return view('livewire.guru.murid', compact('murid_quiz', 'murid_all'));
     }
 
