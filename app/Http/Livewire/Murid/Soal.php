@@ -35,7 +35,6 @@ class Soal extends Component
 
     public function selesai()
     {
-
         $quiz = Quiz::find(session('quiz_id'));
         $soal = $quiz->soal;
         $jawaban = $soal->map(function($item){

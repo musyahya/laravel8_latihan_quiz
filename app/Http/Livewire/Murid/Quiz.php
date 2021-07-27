@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Murid;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,8 +16,18 @@ class Quiz extends Component
 
     public function soal($id)
     {
-        session(['quiz_id' => $id]);
-        redirect('/soal');
+        $cek = DB::table('quiz_murid')
+            ->select('status')
+            ->where('quiz_id', session('quiz_id'))
+            ->where('murid_id', auth()->id())
+            ->first();
+        if ($cek->status == 1) {
+            session()->flash('gagal', 'Quiz sudah pernah dikerjakan.');
+            redirect('/quiz/murid');
+        }else {
+            session(['quiz_id' => $id]);
+            redirect('/soal');
+        }
     }
 
     public function updatingSearch()
