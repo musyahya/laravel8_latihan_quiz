@@ -11,16 +11,30 @@ class Soal extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $jawab;
-
-    public function jawab($pilihan)
-    {
-        $this->jawab = $pilihan;
-    }
+    public $pilih;
 
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function mount()
+    {
+        $quiz = Quiz::find(session('quiz_id'));
+        $soal = $quiz->soal;
+        foreach ($soal as $key => $value) {
+            $this->pilih[$key] = '';
+        }
+    }
+
+    public function pilih($pilihan, $page)
+    {
+        $this->pilih[$page - 1] = $pilihan;
+    }
+
+    public function selesai()
+    {
+        dd($this->pilih);
     }
 
     public function render()

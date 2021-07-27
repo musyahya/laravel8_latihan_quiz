@@ -27,7 +27,7 @@
                     {{$item->soal}}
                 </div>
             </div>
-            <div wire:click="jawab('pilihan_a')" class="card pointer {{($jawab == 'pilihan_a') ? 'border border-primary' : ''}}">
+            <div wire:click="pilih('pilihan_a', '{{$this->page}}')" class="card pointer {{($pilih[$this->page-1] == 'pilihan_a') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan A
                 </div>
@@ -35,7 +35,7 @@
                     {{$item->pilihan_a}}
                 </div>
             </div>
-            <div wire:click="jawab('pilihan_b')" class="card pointer {{($jawab == 'pilihan_b') ? 'border border-primary' : ''}}">
+            <div wire:click="pilih('pilihan_b', '{{$this->page}}')" class="card pointer {{($pilih[$this->page-1] == 'pilihan_b') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan B
                 </div>
@@ -43,7 +43,7 @@
                     {{$item->pilihan_b}}
                 </div>
             </div>
-            <div wire:click="jawab('pilihan_c')" class="card pointer {{($jawab == 'pilihan_c') ? 'border border-primary' : ''}}">
+            <div wire:click="pilih('pilihan_c', '{{$this->page}}')" class="card pointer {{($pilih[$this->page-1] == 'pilihan_c') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan C
                 </div>
@@ -51,7 +51,7 @@
                     {{$item->pilihan_c}}
                 </div>
             </div>
-            <div wire:click="jawab('pilihan_d')" class="card pointer {{($jawab == 'pilihan_d') ? 'border border-primary' : ''}}">
+            <div wire:click="pilih('pilihan_d', '{{$this->page}}')" class="card pointer {{($pilih[$this->page-1] == 'pilihan_d') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan D
                 </div>
@@ -59,7 +59,7 @@
                     {{$item->pilihan_d}}
                 </div>
             </div>
-            <div wire:click="jawab('pilihan_e')" class="card pointer {{($jawab == 'pilihan_e') ? 'border border-primary' : ''}}">
+            <div wire:click="pilih('pilihan_e', '{{$this->page}}')" class="card pointer {{($pilih[$this->page-1] == 'pilihan_e') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan E
                 </div>
@@ -69,7 +69,15 @@
             </div>
         @endforeach
 
-        {{$soal->links()}}
+        <div class="row mt-3">
+            <div class="col-md-10">
+                {{$soal->links()}}
+            </div>
+            <div class="col-md-2">
+                <button wire:click="selesai" class="btn btn-sm btn-primary float-right">Selesai Mengerjakan</button>
+            </div>
+        </div>
+        
     @else
         <div class="alert alert-danger" role="alert">
         Quiz tidak memiliki soal
