@@ -24,7 +24,7 @@
             </div>
             <div class="card-body table-responsive">
 
-                @if ($murid->isNotEmpty())
+                @if ($murid_quiz->isNotEmpty())
 
                     <table class="table table-hover text-nowrap">
                     <thead>
@@ -35,10 +35,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($murid as $item)
+                        @foreach ($murid_quiz as $item)
                             <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{$item->nama}}</td>
+                            <td>{{$item->name}}</td>
                             <td>
                                 <div class="btn-group">
                                     <button wire:click="lihat_soal({{$item->id}})" class="btn btn-sm btn-info mr-2">Lihat Soal</button>
@@ -64,7 +64,7 @@
 
         </div>
         
-        {{-- {{$murid->links()}} --}}
+        {{-- {{$murid_quiz->links()}} --}}
 
     </div>
 </div>
