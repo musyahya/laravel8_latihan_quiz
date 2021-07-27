@@ -3,12 +3,13 @@
 
         @include('adminlte/flash')
         @include('guru/murid/tambah')
-        {{-- @include('guru/murid/edit') --}}
+        @include('guru/murid/edit')
         {{-- @include('guru/murid/hapus') --}}
 
         <div class="card">
             <div class="card-header">
-            <button wire:click="tambah" class="btn btn-sm btn-primary">Tambah</button>
+            <button wire:click="tambah" class="btn btn-sm btn-primary mr-2">Tambah</button>
+            <button wire:click="edit" class="btn btn-sm btn-primary mr-2">Edit</button>
 
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -41,9 +42,6 @@
                             <td>{{$item->name}}</td>
                             <td>
                                 <div class="btn-group">
-                                    <button wire:click="lihat_soal({{$item->id}})" class="btn btn-sm btn-info mr-2">Lihat Soal</button>
-                                    <button wire:click="lihat_murid({{$item->id}})" class="btn btn-sm btn-info mr-2">Lihat Murid</button>
-                                    <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-primary mr-2">Edit</button>
                                     <button wire:click="hapus({{$item->id}})" class="btn btn-sm btn-danger">Hapus</button>
                                 </div>
                             </td>
