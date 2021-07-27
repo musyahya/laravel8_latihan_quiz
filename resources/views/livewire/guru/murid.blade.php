@@ -53,7 +53,7 @@
                                     <span class="badge badge-danger">Belum mengerjakan quiz</span>
                                 @endif
                             </td>
-                            <td>{{$item->benar}}</td>
+                            <td>{{$item->benar}} / {{App\Models\Soal::where('quiz_id', $item->quiz_id)->count()}}</td>
                             <td>{{$item->nilai}} / 100</td>
                             <td>
                                 <div class="btn-group">

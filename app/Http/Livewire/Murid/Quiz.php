@@ -17,9 +17,10 @@ class Quiz extends Component
     {
         $cek = DB::table('quiz_murid')
             ->select('status')
-            ->where('quiz_id', session('quiz_id'))
+            ->where('quiz_id', $id)
             ->where('murid_id', auth()->id())
             ->first();
+
         if ($cek->status == 0) {
             session(['quiz_id' => $id]);
             redirect('/soal/murid');

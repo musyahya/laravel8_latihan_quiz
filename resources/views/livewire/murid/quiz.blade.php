@@ -38,7 +38,7 @@
                             <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$item->nama}}</td>
-                            <td>{{$item->benar}}</td>
+                            <td>{{$item->benar}} / {{App\Models\Soal::where('quiz_id', $item->quiz_id)->count()}}</td>
                             <td>{{$item->nilai}} / 100</td>
                             <td>
                                 @if ($item->status == 1)

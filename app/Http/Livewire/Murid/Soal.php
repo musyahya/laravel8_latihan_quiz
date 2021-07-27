@@ -37,13 +37,13 @@ class Soal extends Component
     {
         $quiz = Quiz::find(session('quiz_id'));
         $soal = $quiz->soal;
-        $jawaban = $soal->map(function($item){
+        $jawaban = $soal->map(function ($item) {
             return $item->jawaban;
         });
-        
+
         $benar = 0;
-        for ($a=0; $a < count($this->pilih); $a++) { 
-            for ($b=0; $b < count($jawaban); $b++) { 
+        for ($a = 0; $a < count($this->pilih); $a++) {
+            for ($b = 0; $b < count($jawaban); $b++) {
                 if ($this->pilih[$a] == $jawaban[$a]) {
                     $benar = $benar + 1;
                     break;
@@ -60,6 +60,14 @@ class Soal extends Component
             'nilai' => $hasil,
             'status' => '1'
         ]);
+
+        for ($a=0; $a < count($soal); $a++) {
+            DB::table('quiz_jawaban_murid')->insert([
+                'soal_id' => $soal[$a]->id,
+                'murid_id' => auth()->id(),
+                'jawaban_murid' => $this->pilih[$a]
+            ]);
+        }
 
         session()->flash('sukses', 'Quiz berhasil diselesaikan.');
         redirect('/quiz/murid');

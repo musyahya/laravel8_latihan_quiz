@@ -107,6 +107,7 @@ class Murid extends Component
                 ->select('quiz_murid.*', 'users.name')
                 ->paginate(5);
         }
+        // dd($murid_quiz);
         
         return view('livewire.guru.murid', compact('murid_quiz', 'murid_all'));
     }
