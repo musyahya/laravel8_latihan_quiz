@@ -14,9 +14,11 @@ class QuizSeeder extends Seeder
      */
     public function run()
     {
-        Quiz::create([
+        $quiz = Quiz::create([
             'nama' => 'quiz matamatika',
             'status' => '1'
         ]);
+
+        $quiz->murid()->attach([1,2]);
     }
 }
