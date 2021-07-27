@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Murid;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SoalControoler extends Controller
+class SoalController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -14,6 +15,6 @@ class SoalControoler extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('guru/soal/index');
+        return view('murid/soal/index');
     }
 }
