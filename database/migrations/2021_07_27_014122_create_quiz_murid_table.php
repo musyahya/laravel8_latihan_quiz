@@ -15,9 +15,8 @@ class CreateQuizMuridTable extends Migration
     {
         Schema::create('quiz_murid', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('quiz_id')->constrained('quiz')->onDelete('cascade');;
-            $table->foreignId('murid_id')->constrained('users')->onDelete('cascade');;
-            $table->timestamps();
+            $table->foreignId('quiz_id')->constrained('quiz')->onDelete('cascade');
+            $table->foreignId('murid_id')->constrained('users')->onDelete('cascade');
         });
     }
 

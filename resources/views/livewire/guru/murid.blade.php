@@ -4,7 +4,7 @@
         @include('adminlte/flash')
         @include('guru/murid/tambah')
         @include('guru/murid/edit')
-        {{-- @include('guru/murid/hapus') --}}
+        @include('guru/murid/hapus')
 
         <div class="card">
             <div class="card-header">

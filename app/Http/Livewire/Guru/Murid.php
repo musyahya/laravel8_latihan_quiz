@@ -8,8 +8,8 @@ use Livewire\Component;
 
 class Murid extends Component
 {
-    public $tambah, $edit;
-    public $murid;
+    public $tambah, $edit, $hapus;
+    public $murid, $murid_id;
 
     protected function rules()
     {
@@ -42,11 +42,26 @@ class Murid extends Component
     public function update()
     {
         $this->validate();
-        
+
         $quiz = Quiz::find(session('quiz_id'));
         $quiz->murid()->sync($this->murid);
 
         session()->flash('sukses', 'Data berhasil diubah.');
+        $this->format();
+    }
+
+    public function hapus($id)
+    {
+        $this->hapus = true;
+        $this->murid_id = $id;
+    }
+
+    public function delete($id)
+    {
+        $quiz = Quiz::find(session('quiz_id'));
+        $quiz->murid()->detach($id);
+
+        session()->flash('sukses', 'Data berhasil dihapus.');
         $this->format();
     }
 
@@ -72,7 +87,9 @@ class Murid extends Component
     {
         $this->tambah = false;
         $this->edit = false;
+        $this->hapus = false;
 
         unset($this->murid);
+        unset($this->murid_id);
     }
 }
