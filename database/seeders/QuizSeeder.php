@@ -20,5 +20,12 @@ class QuizSeeder extends Seeder
         ]);
 
         $quiz->murid()->attach([2,3]);
+        
+        $quiz = Quiz::create([
+            'nama' => 'asd',
+            'status' => '1'
+        ]);
+
+        $quiz->murid()->attach([2,3]);
     }
 }

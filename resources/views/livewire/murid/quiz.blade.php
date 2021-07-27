@@ -27,6 +27,8 @@
                         <tr>
                         <th>No</th>
                         <th>Nama Quiz</th>
+                        <th>Benar</th>
+                        <th>Nilai</th>
                         <th>Status</th>
                         <th width="20%">Aksi</th>
                         </tr>
@@ -36,6 +38,8 @@
                             <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$item->nama}}</td>
+                            <td>{{$item->benar}}</td>
+                            <td>{{$item->nilai}}</td>
                             <td>
                                 @if ($item->status == 1)
                                     <span class="badge badge-success">Selesai dikerjakan</span>
@@ -45,7 +49,7 @@
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <button wire:click="soal({{$item->id}})" {{($item->status == 1) ? 'disabled' : ''}} class="btn btn-sm btn-primary">Kerjakan</button>
+                                    <button wire:click="soal({{$item->quiz_id}})" {{($item->status == 1) ? 'disabled' : ''}} class="btn btn-sm btn-primary">Kerjakan</button>
                                 </div>
                             </td>
                             </tr>

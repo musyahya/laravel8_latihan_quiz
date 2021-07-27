@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Murid;
 
+use App\Models\Quiz as ModelsQuiz;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -37,8 +38,12 @@ class Quiz extends Component
 
     public function render()
     {
-        $user = User::find(auth()->id());
-        $quiz = $user->quiz()->paginate(1);
+        $quiz = DB::table('quiz_murid')
+            ->join('quiz', 'quiz_murid.quiz_id', '=', 'quiz.id')
+            ->where('murid_id', auth()->id())
+            ->select('quiz.nama', 'quiz_murid.*')
+            ->paginate(5);
+
         return view('livewire.murid.quiz', compact('quiz'));
     }
 }
