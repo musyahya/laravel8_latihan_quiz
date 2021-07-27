@@ -20,9 +20,10 @@
                 </div>
                 <div class="card-body">
                     {{$item->soal}}
+                    {{$item->soal->quiz_jawaban_murid}}
                 </div>
             </div>
-            <div wire:click="pilih('pilihan_a', '{{$this->page}}')" class="card pointer {{($pilih[$this->page-1] == 'pilihan_a') ? 'border border-primary' : ''}}">
+            <div  class="card pointer {{('pilihan_a' == 'pilihan_a') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan A
                 </div>
@@ -30,7 +31,7 @@
                     {{$item->pilihan_a}}
                 </div>
             </div>
-            <div wire:click="pilih('pilihan_b', '{{$this->page}}')" class="card pointer {{($pilih[$this->page-1] == 'pilihan_b') ? 'border border-primary' : ''}}">
+            <div  class="card pointer {{('pilihan_a' == 'pilihan_b') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan B
                 </div>
@@ -38,7 +39,7 @@
                     {{$item->pilihan_b}}
                 </div>
             </div>
-            <div wire:click="pilih('pilihan_c', '{{$this->page}}')" class="card pointer {{($pilih[$this->page-1] == 'pilihan_c') ? 'border border-primary' : ''}}">
+            <div  class="card pointer {{('pilihan_a' == 'pilihan_c') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan C
                 </div>
@@ -46,7 +47,7 @@
                     {{$item->pilihan_c}}
                 </div>
             </div>
-            <div wire:click="pilih('pilihan_d', '{{$this->page}}')" class="card pointer {{($pilih[$this->page-1] == 'pilihan_d') ? 'border border-primary' : ''}}">
+            <div  class="card pointer {{('pilihan_a' == 'pilihan_d') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan D
                 </div>
@@ -54,7 +55,7 @@
                     {{$item->pilihan_d}}
                 </div>
             </div>
-            <div wire:click="pilih('pilihan_e', '{{$this->page}}')" class="card pointer {{($pilih[$this->page-1] == 'pilihan_e') ? 'border border-primary' : ''}}">
+            <div  class="card pointer {{('pilihan_a' == 'pilihan_e') ? 'border border-primary' : ''}}">
                 <div class="card-header">
                     Pilihan E
                 </div>

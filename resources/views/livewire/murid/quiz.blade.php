@@ -50,6 +50,9 @@
                             <td>
                                 <div class="btn-group">
                                     <button wire:click="soal({{$item->quiz_id}})" {{($item->status == 1) ? 'disabled' : ''}} class="btn btn-sm btn-primary">Kerjakan</button>
+                                    @if ($item->status == 1)
+                                    <button wire:click="lihat_jawaban({{$item->quiz_id}})" class="btn btn-sm btn-primary ml-2">Lihat jawaban</button>
+                                    @endif
                                 </div>
                             </td>
                             </tr>

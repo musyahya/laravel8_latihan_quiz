@@ -11,7 +11,8 @@ class Quiz extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $soal, $search;
+    public $search;
+    // public $soal, $search;
 
     public function soal($id)
     {
@@ -28,6 +29,12 @@ class Quiz extends Component
             session()->flash('gagal', 'Quiz sudah pernah dikerjakan.');
             redirect('/quiz/murid');
         }
+    }
+
+    public function lihat_jawaban($id)
+    {
+        session(['quiz_id' => $id]);
+        redirect('/lihat_jawaban');
     }
 
     public function updatingSearch()

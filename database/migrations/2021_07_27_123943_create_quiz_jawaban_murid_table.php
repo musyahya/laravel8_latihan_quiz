@@ -15,8 +15,8 @@ class CreateQuizJawabanMuridTable extends Migration
     {
         Schema::create('quiz_jawaban_murid', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('soal_id')->constrained('soal')->onDelete('cascade');
-            $table->foreignId('murid_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('soal_id');
+            $table->foreignId('murid_id');
             $table->string('jawaban_murid');
         });
     }
