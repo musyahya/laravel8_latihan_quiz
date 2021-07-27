@@ -16,6 +16,7 @@ class CreateQuizzesTable extends Migration
         Schema::create('quiz', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->enum('status', ['0', '1']);
             $table->timestamps();
         });
     }

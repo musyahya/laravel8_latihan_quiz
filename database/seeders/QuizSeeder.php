@@ -15,7 +15,8 @@ class QuizSeeder extends Seeder
     public function run()
     {
         Quiz::create([
-            'nama' => 'quiz matamatika'
+            'nama' => 'quiz matamatika',
+            'status' => '1'
         ]);
     }
 }

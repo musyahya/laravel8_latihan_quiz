@@ -10,7 +10,7 @@ class Quiz extends Model
     use HasFactory;
     
     protected $table = 'quiz';
-    protected $fillable = ['nama'];
+    protected $fillable = ['nama', 'status'];
 
     public function soal()
     {

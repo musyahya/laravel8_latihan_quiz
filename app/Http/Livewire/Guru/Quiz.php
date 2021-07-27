@@ -33,7 +33,8 @@ class Quiz extends Component
         $this->validate();
 
         $quiz = ModelsQuiz::create([
-            'nama' => $this->nama
+            'nama' => $this->nama,
+            'status' => '1'
         ]);
 
         session()->flash('first_tambah');
