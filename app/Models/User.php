@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Quiz::class, 'guru_id');
     }
+
+    public function soal()
+    {
+        return $this->belongsToMany(Soal::class, 'quiz_jawaban_murid', 'murid_id', 'soal_id');
+    }
 }
