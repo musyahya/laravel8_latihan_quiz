@@ -8,8 +8,11 @@
 
         <div class="card">
             <div class="card-header">
-            <button wire:click="tambah" class="btn btn-sm btn-primary mr-2">Tambah</button>
+            @if ($murid_quiz->isNotEmpty())
             <button wire:click="edit" class="btn btn-sm btn-primary mr-2">Edit</button>
+            @else
+            <button wire:click="tambah" class="btn btn-sm btn-primary mr-2">Tambah</button>
+            @endif
 
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">

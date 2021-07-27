@@ -78,12 +78,12 @@ class Murid extends Component
     public function render()
     {
         $quiz = Quiz::find(session('quiz_id'));
-        $murid_quiz = $quiz->murid()->paginate(1);
 
         if ($this->tambah) {
             $murid_all = User::role('murid')->get();
         }elseif ($this->edit) {
             $murid_all = User::role('murid')->get();
+            $murid_quiz = $quiz->murid;
             $this->murid = $murid_quiz->map(function($item){
                 return $item->id;
             });
@@ -92,12 +92,11 @@ class Murid extends Component
             $murid_all = null;
         }
 
-        // if ($this->search) {
-        //     $murid_quiz = $murid_quiz->contains(function($item){
-        //         return $item->name = $this->search;
-        //     });
-        //     dd($murid_quiz);
-        // }
+        if ($this->search) {
+            $murid_quiz = $quiz->murid()->where('name', 'like', '%'. $this->search .'%')->paginate(5);
+        } else {
+            $murid_quiz = $quiz->murid()->paginate(5);
+        }
 
         return view('livewire.guru.murid', compact('murid_quiz', 'murid_all'));
     }
