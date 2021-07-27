@@ -5,10 +5,14 @@ namespace App\Http\Livewire\Guru;
 use App\Models\Quiz;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Murid extends Component
 {
-    public $tambah, $edit, $hapus;
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
+    public $tambah, $edit, $hapus, $search;
     public $murid, $murid_id;
 
     protected function rules()
@@ -16,6 +20,11 @@ class Murid extends Component
         return [
             'murid' => 'required',
         ];
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
     public function tambah()
@@ -61,6 +70,7 @@ class Murid extends Component
         $quiz = Quiz::find(session('quiz_id'));
         $quiz->murid()->detach($id);
 
+        $this->updatingSearch();
         session()->flash('sukses', 'Data berhasil dihapus.');
         $this->format();
     }
@@ -68,7 +78,8 @@ class Murid extends Component
     public function render()
     {
         $quiz = Quiz::find(session('quiz_id'));
-        $murid_quiz = $quiz->murid;
+        $murid_quiz = $quiz->murid()->paginate(1);
+
         if ($this->tambah) {
             $murid_all = User::role('murid')->get();
         }elseif ($this->edit) {
@@ -80,6 +91,14 @@ class Murid extends Component
         } else {
             $murid_all = null;
         }
+
+        // if ($this->search) {
+        //     $murid_quiz = $murid_quiz->contains(function($item){
+        //         return $item->name = $this->search;
+        //     });
+        //     dd($murid_quiz);
+        // }
+
         return view('livewire.guru.murid', compact('murid_quiz', 'murid_all'));
     }
 

@@ -62,7 +62,7 @@
 
         </div>
         
-        {{-- {{$murid_quiz->links()}} --}}
+        {{$murid_quiz->links()}}
 
     </div>
 </div>
