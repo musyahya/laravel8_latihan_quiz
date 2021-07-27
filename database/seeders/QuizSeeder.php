@@ -19,6 +19,6 @@ class QuizSeeder extends Seeder
             'status' => '1'
         ]);
 
-        $quiz->murid()->attach([1,2]);
+        $quiz->murid()->attach([2,3]);
     }
 }

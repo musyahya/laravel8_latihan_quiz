@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Murid;
 
 use App\Models\Quiz;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -34,7 +35,35 @@ class Soal extends Component
 
     public function selesai()
     {
-        dd($this->pilih);
+
+        $quiz = Quiz::find(session('quiz_id'));
+        $soal = $quiz->soal;
+        $jawaban = $soal->map(function($item){
+            return $item->jawaban;
+        });
+        
+        $benar = 0;
+        for ($a=0; $a < count($this->pilih); $a++) { 
+            for ($b=0; $b < count($jawaban); $b++) { 
+                if ($this->pilih[$a] == $jawaban[$a]) {
+                    $benar = $benar + 1;
+                    break;
+                } else {
+                    $benar = $benar;
+                    break;
+                }
+            }
+        }
+        $hasil = $benar / count($jawaban) * 100;
+
+        DB::table('quiz_murid')->where('quiz_id', session('quiz_id'))->where('murid_id', auth()->id())->update([
+            'benar' => $benar,
+            'nilai' => $hasil,
+            'status' => '1'
+        ]);
+
+        session()->flash('sukses', 'Quiz berhasil diselesaikan.');
+        redirect('/quiz/murid');
     }
 
     public function render()

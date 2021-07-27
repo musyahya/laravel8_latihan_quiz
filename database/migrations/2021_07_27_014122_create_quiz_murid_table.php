@@ -17,6 +17,9 @@ class CreateQuizMuridTable extends Migration
             $table->id();
             $table->foreignId('quiz_id')->constrained('quiz')->onDelete('cascade');
             $table->foreignId('murid_id')->constrained('users')->onDelete('cascade');
+            $table->enum('status', [0,1])->default(0);
+            $table->integer('benar')->default(0);
+            $table->integer('nilai')->default(0);
         });
     }
 
