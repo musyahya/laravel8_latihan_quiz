@@ -2,9 +2,9 @@
     <div class="col-12">
 
         @include('adminlte/flash')
-        @include('guru/quiz/tambah')
-        @include('guru/quiz/edit')
-        @include('guru/quiz/hapus')
+        @include('guru/murid/tambah')
+        {{-- @include('guru/murid/edit') --}}
+        {{-- @include('guru/murid/hapus') --}}
 
         <div class="card">
             <div class="card-header">
@@ -24,18 +24,18 @@
             </div>
             <div class="card-body table-responsive">
 
-                @if ($quiz->isNotEmpty())
+                @if ($murid->isNotEmpty())
 
                     <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
                         <th>No</th>
-                        <th>Nama Quiz</th>
+                        <th>Nama Murid</th>
                         <th width="20%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($quiz as $item)
+                        @foreach ($murid as $item)
                             <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$item->nama}}</td>
@@ -64,7 +64,7 @@
 
         </div>
         
-        {{$quiz->links()}}
+        {{-- {{$murid->links()}} --}}
 
     </div>
 </div>

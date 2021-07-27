@@ -70,12 +70,6 @@ class Quiz extends Component
         $this->quiz_id = $quiz->id;
     }
 
-    public function lihat_soal($id)
-    {
-        session(['quiz_id' => $id]);
-        redirect('/soal');
-    }
-
     public function delete(ModelsQuiz $quiz)
     {
         $quiz->delete();
@@ -83,6 +77,18 @@ class Quiz extends Component
         session()->flash('sukses', 'Data berhasil dihapus.');
         $this->format();
         $this->updatingSearch();
+    }
+
+    public function lihat_soal($id)
+    {
+        session(['quiz_id' => $id]);
+        redirect('/soal');
+    }
+    
+    public function lihat_murid($id)
+    {
+        session(['quiz_id' => $id]);
+        redirect('/murid');
     }
 
     public function render()
