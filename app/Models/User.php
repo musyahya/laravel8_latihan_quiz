@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(KelompokBelajar::class, 'kelompok_belajar_user', 'user_id', 'kelompok_belajar_id');
     }
+
+    public function quiz()
+    {
+        return $this->belongsToMany(Quiz::class, 'quiz_murid', 'murid_id', 'quiz_id');
+    }
 }

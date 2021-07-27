@@ -4,9 +4,10 @@ use App\Http\Controllers\CekRoleController;
 use App\Http\Controllers\Guru\DashboardController as GuruDashboard;
 use App\Http\Controllers\Guru\KelompokBelajarController;
 use App\Http\Controllers\Guru\KelompokBelajarMuridController;
-use App\Http\Controllers\Guru\QuizController;
+use App\Http\Controllers\Guru\QuizController as GuruQuiz;
 use App\Http\Controllers\Guru\SoalController;
 use App\Http\Controllers\Murid\DashboardController as MuridDashboard;
+use App\Http\Controllers\Murid\QuizController as MuridQuiz;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,7 +38,7 @@ Route::get('/', CekRoleController::class);
 
 Route::middleware(['auth','role:guru'])->group(function () {
     Route::get('/dashboard/guru', GuruDashboard::class);
-    Route::get('/quiz', QuizController::class);
+    Route::get('/quiz', GuruQuiz::class);
     Route::get('/soal', SoalController::class);
     Route::get('/kelompok_belajar', KelompokBelajarController::class);
     Route::get('/kelompok_belajar_murid', KelompokBelajarMuridController::class);
@@ -45,4 +46,5 @@ Route::middleware(['auth','role:guru'])->group(function () {
 
 Route::middleware(['auth','role:murid'])->group(function () {
     Route::get('/dashboard/murid', MuridDashboard::class);
+    Route::get('/quiz/murid', MuridQuiz::class);
 });

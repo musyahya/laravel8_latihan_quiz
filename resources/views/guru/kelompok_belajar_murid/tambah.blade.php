@@ -11,7 +11,7 @@
             <div class="modal-body">
               <div class="form-group">
                   <label for="murid">Murid</label>
-                  <select wire:model="murid" class="form-control" id="murid" multiple>
+                  <select wire:model="murid" class="form-control" id="murid" multiple size="10">
                     @foreach ($murid_all as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                     @endforeach

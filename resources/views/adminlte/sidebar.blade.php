@@ -21,22 +21,36 @@
             </a>
           </li>
           <li class="nav-header">MASTER</li>
-          <li class="nav-item">
-            <a href="/quiz" class="nav-link @yield('active-quiz')">
-              <i class="fas fa-copy"></i>
-              <p>
-                Quiz
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/kelompok_belajar" class="nav-link @yield('active-kelompok-belajar')">
-              <i class="fas fa-users"></i>
-              <p>
-                Kelompok Belajar
-              </p>
-            </a>
-          </li>
+          @role('guru')
+              <li class="nav-item">
+                  <a href="/quiz" class="nav-link @yield('active-quiz')">
+                    <i class="fas fa-copy"></i>
+                    <p>
+                      Quiz
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/kelompok_belajar" class="nav-link @yield('active-kelompok-belajar')">
+                    <i class="fas fa-users"></i>
+                    <p>
+                      Kelompok Belajar
+                    </p>
+                  </a>
+                </li>
+          @endrole
+
+          @role('murid')
+            <li class="nav-item">
+              <a href="/quiz/murid" class="nav-link @yield('active-kelompok-belajar')">
+                <i class="fas fa-users"></i>
+                <p>
+                  Quiz
+                </p>
+              </a>
+            </li>
+          @endrole
+ 
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

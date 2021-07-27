@@ -16,4 +16,9 @@ class Quiz extends Model
     {
         return $this->hasMany(Soal::class);
     }
+
+    public function murid()
+    {
+        return $this->belongsToMany(User::class, 'quiz_murid', 'quiz_id', 'murid_id');
+    }
 }

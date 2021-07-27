@@ -6,16 +6,16 @@
         @include('guru/kelompok_belajar_murid/edit')
         @include('guru/kelompok_belajar_murid/hapus')
 
-          <select class="select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
-                <option>Alabama</option>
-                <option>Alaska</option>
-                <option>California</option>
-                <option>Delaware</option>
-                <option>Tennessee</option>
-                <option>Texas</option>
-                <option>Washington</option>
-                </select>
-        
+        {{-- <select class="select2 mb-3" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+            <option>Alabama</option>
+            <option>Alaska</option>
+            <option>California</option>
+            <option>Delaware</option>
+            <option>Tennessee</option>
+            <option>Texas</option>
+            <option>Washington</option>
+        </select> --}}
+    
         <div class="card">
             <div class="card-header">
             <button wire:click="tambah" class="btn btn-sm btn-primary mr-2">Tambah</button>
