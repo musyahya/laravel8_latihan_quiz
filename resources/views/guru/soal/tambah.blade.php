@@ -49,12 +49,12 @@
        <div class="form-group">
             <label for="jawaban">Jawaban</label>
             <select class="form-control" id="jawaban" name="jawaban">
-                <option selected disabled>Pilihan Jawaban</option>
-                <option value="pilihan_a">Pilihan A</option>
-                <option value="pilihan_b">Pilihan B</option>
-                <option value="pilihan_c">Pilihan C</option>
-                <option value="pilihan_d">Pilihan D</option>
-                <option value="pilihan_e">Pilihan E</option>
+                <option {{old('jawaban') ? '' : 'selected disabled'}}>Pilihan Jawaban</option>
+                <option {{old('jawaban') == 'pilihan_a' ? 'selected' : ''}} value="pilihan_a">Pilihan A</option>
+                <option {{old('jawaban') == 'pilihan_b' ? 'selected' : ''}} value="pilihan_b">Pilihan B</option>
+                <option {{old('jawaban') == 'pilihan_c' ? 'selected' : ''}} value="pilihan_c">Pilihan C</option>
+                <option {{old('jawaban') == 'pilihan_d' ? 'selected' : ''}} value="pilihan_d">Pilihan D</option>
+                <option {{old('jawaban') == 'pilihan_e' ? 'selected' : ''}} value="pilihan_e">Pilihan E</option>
             </select>
             @error('jawaban')
                 <small class="text-danger">{{ $message }}</small>
