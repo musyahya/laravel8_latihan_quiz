@@ -30,7 +30,7 @@
                         <th>Benar</th>
                         <th>Nilai</th>
                         <th>Status</th>
-                        <th width="20%">Aksi</th>
+                        <th width="10%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,9 +49,10 @@
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <button wire:click="soal({{$item->quiz_id}})" {{($item->status == 1) ? 'disabled' : ''}} class="btn btn-sm btn-primary">Kerjakan</button>
                                     @if ($item->status == 1)
                                     <button wire:click="lihat_jawaban({{$item->quiz_id}})" class="btn btn-sm btn-primary ml-2">Lihat jawaban</button>
+                                    @else
+                                    <button wire:click="soal({{$item->quiz_id}})" {{($item->status == 1) ? 'disabled' : ''}} class="btn btn-sm btn-primary">Kerjakan</button>
                                     @endif
                                 </div>
                             </td>
