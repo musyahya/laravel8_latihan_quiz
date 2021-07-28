@@ -20,10 +20,10 @@
                 </div>
                 <div class="card-body">
                     {{$item->soal}}
-                    {{$item->soal->quiz_jawaban_murid}}
+                    {{-- {{$item->soal->quiz_jawaban_murid}} --}}
                 </div>
             </div>
-            <div  class="card pointer {{('pilihan_a' == 'pilihan_a') ? 'border border-primary' : ''}}">
+            <div  class="card {{($item->jawaban == 'pilihan_a') ? 'border border-success' : ''}}">
                 <div class="card-header">
                     Pilihan A
                 </div>
@@ -31,7 +31,7 @@
                     {{$item->pilihan_a}}
                 </div>
             </div>
-            <div  class="card pointer {{('pilihan_a' == 'pilihan_b') ? 'border border-primary' : ''}}">
+            <div  class="card {{($item->jawaban == 'pilihan_b') ? 'border border-success' : ''}}">
                 <div class="card-header">
                     Pilihan B
                 </div>
@@ -39,7 +39,7 @@
                     {{$item->pilihan_b}}
                 </div>
             </div>
-            <div  class="card pointer {{('pilihan_a' == 'pilihan_c') ? 'border border-primary' : ''}}">
+            <div  class="card {{($item->jawaban == 'pilihan_c') ? 'border border-success' : ''}}">
                 <div class="card-header">
                     Pilihan C
                 </div>
@@ -47,7 +47,7 @@
                     {{$item->pilihan_c}}
                 </div>
             </div>
-            <div  class="card pointer {{('pilihan_a' == 'pilihan_d') ? 'border border-primary' : ''}}">
+            <div  class="card {{($item->jawaban == 'pilihan_d') ? 'border border-success' : ''}}">
                 <div class="card-header">
                     Pilihan D
                 </div>
@@ -55,7 +55,7 @@
                     {{$item->pilihan_d}}
                 </div>
             </div>
-            <div  class="card pointer {{('pilihan_a' == 'pilihan_e') ? 'border border-primary' : ''}}">
+            <div  class="card {{($item->jawaban == 'pilihan_e') ? 'border border-success' : ''}}">
                 <div class="card-header">
                     Pilihan E
                 </div>
@@ -68,9 +68,6 @@
         <div class="row mt-3">
             <div class="col-md-10">
                 {{$soal->links()}}
-            </div>
-            <div class="col-md-2">
-                <button wire:click="selesai" class="btn btn-sm btn-primary float-right">Selesai Mengerjakan</button>
             </div>
         </div>
         
