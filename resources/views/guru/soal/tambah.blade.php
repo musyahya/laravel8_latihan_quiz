@@ -1,5 +1,5 @@
 @extends('adminlte/app')
-@section('title', 'Soal')
+@section('title', 'Tambah Soal')
 
 @section('content')
    <form action="/soal" method="post" class="mb-3">
@@ -60,6 +60,24 @@
                 <small class="text-danger">{{ $message }}</small>
             @enderror
        </div>
-       <button type="submit" class="btn btn-primary">Kirim</button>
+       <button type="submit" class="btn btn-primary">Tambah</button>
    </form>
+@endsection
+
+@section('style')
+    <!-- summernote -->
+    <link rel="stylesheet" href="/adminlte/plugins/summernote/summernote-bs4.min.css">
+@endsection
+
+@section('script')
+    <!-- Summernote -->
+    <script src="/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
+    <script>
+    $(function () {
+        // Summernote
+        $('.summernote').summernote({
+            height: 200,
+        })
+    })
+    </script>
 @endsection

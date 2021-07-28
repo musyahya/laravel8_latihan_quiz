@@ -1,7 +1,6 @@
 <div class="row">
     <div class="col-12">
 
-    @include('guru/soal/edit')
     @include('guru/soal/hapus')
     
     <div class="row">
@@ -19,8 +18,8 @@
                 <div class="card-header">
                     Soal {{$this->page}}
                     <div class="btn-group float-right">
-                        <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-primary ml-2">Edit</button>
                         <button wire:click="hapus({{$item->id}})" class="btn btn-sm btn-danger ml-2">Hapus</button>
+                        <a href="/soal/{{$item->id}}/edit" class="btn btn-sm btn-primary ml-2">Edit</a>
                     </div>
                 </div>
                 <div class="card-body">
