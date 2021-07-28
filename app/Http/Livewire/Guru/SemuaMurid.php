@@ -12,7 +12,7 @@ class SemuaMurid extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $tambah, $edit, $hapus;
+    public $tambah, $edit, $hapus, $search;
     public $nama, $email, $password, $password_confirmation, $murid_id;
 
     protected function rules()
@@ -115,7 +115,12 @@ class SemuaMurid extends Component
 
     public function render()
     {
-        $murid = User::role('murid')->paginate(5);
+        if ($this->search) {
+            $murid = User::role('murid')->where('name', 'like', '%'. $this->search .'%')->paginate(5);
+        } else {
+            $murid = User::role('murid')->paginate(5);
+        }
+       
         return view('livewire.guru.semua-murid', compact('murid'));
     }
 
