@@ -12,7 +12,7 @@ class Soal extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $tambah, $edit, $hapus, $search;
+    public $edit, $hapus, $search;
     public $soal, $pilihan_a, $pilihan_b, $pilihan_c, $pilihan_d, $pilihan_e, $jawaban, $soal_id;
 
     protected function rules()
@@ -31,30 +31,6 @@ class Soal extends Component
     public function updatingSearch()
     {
         $this->resetPage();
-    }
-
-    public function tambah()
-    {
-        $this->tambah = true;
-    }
-    
-    public function simpan()
-    {
-        $this->validate();
-
-        ModelsSoal::create([
-            'soal' => $this->soal,
-            'pilihan_a' => $this->pilihan_a,
-            'pilihan_b' => $this->pilihan_b,
-            'pilihan_c' => $this->pilihan_c,
-            'pilihan_d' => $this->pilihan_d,
-            'pilihan_e' => $this->pilihan_e,
-            'jawaban' => $this->jawaban,
-            'quiz_id' => session('quiz_id')
-        ]);
-
-        session()->flash('sukses', 'Data berhasil ditambahkan.');
-        $this->format();
     }
 
     public function edit(ModelsSoal $soal)
@@ -122,7 +98,6 @@ class Soal extends Component
 
     public function format()
     {
-        $this->tambah = false;
         $this->edit = false;
         $this->hapus = false;
 

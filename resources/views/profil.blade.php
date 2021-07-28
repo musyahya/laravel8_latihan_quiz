@@ -2,12 +2,6 @@
 @section('title', 'Profil')
 
 @section('content')
-    @if(Session::has('sukses'))
-        <div class="alert alert-success">
-            {{Session::get('sukses')}}
-        </div>
-    @endif
-
     <form action="/profil" method="post">
         @csrf
         <div class="form-group">

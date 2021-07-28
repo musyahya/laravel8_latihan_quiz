@@ -2,12 +2,6 @@
 @section('title', 'Ganti Password')
 
 @section('content')
-     @if(Session::has('sukses'))
-        <div class="alert alert-success">
-            {{Session::get('sukses')}}
-        </div>
-    @endif
-
     <form action="/gantipassword" method="post">
         @csrf
         <input type="hidden" value="gantipassword" name="status">

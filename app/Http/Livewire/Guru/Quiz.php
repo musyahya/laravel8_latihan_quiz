@@ -38,7 +38,6 @@ class Quiz extends Component
             'status' => '1'
         ]);
 
-        session()->flash('first_tambah');
         $this->format();
 
         session(['quiz_id' => $quiz->id]);

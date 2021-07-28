@@ -30,6 +30,9 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
 //     return redirect('/login');
 // });
+Route::get('/asd', function () {
+    return view('asd');
+});
 
 Auth::routes();
 
@@ -40,7 +43,9 @@ Route::get('/', CekRoleController::class);
 Route::middleware(['auth','role:guru'])->group(function () {
     Route::get('/dashboard/guru', GuruDashboard::class);
     Route::get('/quiz', GuruQuiz::class);
-    Route::get('/soal', GuruSoal::class);
+
+    Route::resource('/soal', GuruSoal::class);
+
     Route::get('/murid', MuridController::class);
     Route::get('/semua_murid', SemuaMuridController::class);
     Route::get('/murid_quiz', MuridQuizController::class);

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @yield('header')
+    @yield('style')
     @include('adminlte/header')
     <link rel="stylesheet" href="{{asset('css/mystyle.css')}}">
     @livewireStyles
@@ -33,6 +33,12 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        @if(Session::has('sukses'))
+            <div class="alert alert-success">
+                {{Session::get('sukses')}}
+            </div>
+        @endif
+
         @yield('content')
       </div><!-- /.container-fluid -->
     </section>
