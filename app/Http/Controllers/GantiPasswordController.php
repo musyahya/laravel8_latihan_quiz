@@ -4,30 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Password;
 
-class ProfilController extends Controller
+class GantiPasswordController extends Controller
 {
     public function index()
     {
-        return view('profil');
+        return view('gantipassword');
     }
 
     public function update(Request $request)
     {
         $data = [
-            'nama' => 'required',
-            'email' => 'required|email',
+            'password' => ['required', Password::min(8), 'confirmed'],
+            'password_confirmation' => ['required', Password::min(8)]
         ];
 
-        if (auth()->user()->email != $request->email) {
-            $data['email'] = ['required', 'email', 'unique:App\Models\User,email'];
-        }
-
         $request->validate($data);
-
+        
         User::whereId(auth()->id())->update([
-            'name' => $request->nama,
-            'email' => $request->email
+            'password' => bcrypt($request->password),
         ]);
 
         return redirect()->back()->with('sukses', 'Data berhasil diubah');

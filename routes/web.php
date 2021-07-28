@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CekRoleController;
+use App\Http\Controllers\GantiPasswordController;
 use App\Http\Controllers\Guru\DashboardController as GuruDashboard;
 use App\Http\Controllers\Guru\MuridController;
 use App\Http\Controllers\Guru\MuridQuizController;
@@ -29,9 +30,6 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
 //     return redirect('/login');
 // });
-Route::get('/asd', function () {
-    return view('asd');
-});
 
 Auth::routes();
 
@@ -57,5 +55,8 @@ Route::middleware(['auth','role:murid'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/cekrole', CekRoleController::class);
-    Route::post('/profil', ProfilController::class);
+    Route::get('/profil', [ProfilController::class, 'index']);
+    Route::post('/profil', [ProfilController::class, 'update']);
+    Route::get('/gantipassword', [GantiPasswordController::class, 'index']);
+    Route::post('/gantipassword', [GantiPasswordController::class, 'update']);
 });

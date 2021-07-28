@@ -21,13 +21,6 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-
-        @if(Session::has('sukses'))
-              <div class="alert alert-success">
-                  {{Session::get('sukses')}}
-              </div>
-          @endif
-
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0">@yield('title')</h1>
