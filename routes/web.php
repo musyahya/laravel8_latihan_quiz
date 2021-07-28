@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\CekRoleController;
 use App\Http\Controllers\Guru\DashboardController as GuruDashboard;
-use App\Http\Controllers\Guru\KelompokBelajarController;
-use App\Http\Controllers\Guru\KelompokBelajarMuridController;
 use App\Http\Controllers\Guru\MuridController;
 use App\Http\Controllers\Guru\MuridQuizController;
 use App\Http\Controllers\Guru\QuizController as GuruQuiz;
@@ -48,8 +46,6 @@ Route::middleware(['auth','role:guru'])->group(function () {
     Route::get('/murid', MuridController::class);
     Route::get('/semua_murid', SemuaMuridController::class);
     Route::get('/murid_quiz', MuridQuizController::class);
-    Route::get('/kelompok_belajar', KelompokBelajarController::class);
-    Route::get('/kelompok_belajar_murid', KelompokBelajarMuridController::class);
 });
 
 Route::middleware(['auth','role:murid'])->group(function () {

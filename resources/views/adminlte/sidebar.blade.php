@@ -38,14 +38,6 @@
                     </p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="/kelompok_belajar" class="nav-link @yield('active-kelompok-belajar')">
-                    <i class="fas fa-users"></i>
-                    <p>
-                      Kelompok Belajar
-                    </p>
-                  </a>
-                </li>
           @endrole
 
           @role('murid')
