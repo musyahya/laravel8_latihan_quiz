@@ -13,10 +13,14 @@
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fas fa-sign-out-alt"></i>
+          <i class="fas fa-user"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a href="#" class="dropdown-item dropdown-footer" onclick="event.preventDefault();
+          <a href="#" class="dropdown-item"  data-toggle="modal" data-target="#profil">
+            Profil
+          </a>
+
+          <a href="#" class="dropdown-item" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
             Logout
           </a>
@@ -29,3 +33,39 @@
     </ul>
   </nav>
   <!-- /.navbar -->
+
+  <div class="modal fade" id="profil" tabindex="-1" aria-labelledby="profilLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="profilLabel">Profil</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/profil" method="POST">
+          <div class="modal-body">
+                @csrf
+                <div class="form-group">
+                  <label for="nama">Nama</label>
+                  <input type="text" class="form-control" id="nama" value="{{auth()->user()->name}}" name="nama">
+                  @error('nama')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="text" class="form-control" id="email" value="{{auth()->user()->email}}" name="email">
+                  @error('email')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+                </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>

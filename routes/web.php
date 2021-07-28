@@ -11,6 +11,7 @@ use App\Http\Controllers\Murid\DashboardController as MuridDashboard;
 use App\Http\Controllers\Murid\LihatJawabanController;
 use App\Http\Controllers\Murid\QuizController as MuridQuiz;
 use App\Http\Controllers\Murid\SoalController as MuridSoal;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,7 +38,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', CekRoleController::class);
-Route::get('/cekrole', CekRoleController::class);
 
 Route::middleware(['auth','role:guru'])->group(function () {
     Route::get('/dashboard/guru', GuruDashboard::class);
@@ -53,4 +53,9 @@ Route::middleware(['auth','role:murid'])->group(function () {
     Route::get('/quiz/murid', MuridQuiz::class);
     Route::get('/soal/murid', MuridSoal::class);
     Route::get('/lihat_jawaban', LihatJawabanController::class);
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cekrole', CekRoleController::class);
+    Route::post('/profil', ProfilController::class);
 });
