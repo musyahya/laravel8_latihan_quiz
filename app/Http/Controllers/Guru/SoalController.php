@@ -47,7 +47,10 @@ class SoalController extends Controller
 
     public function edit(Request $request, $id)
     {
+        // dd($id);
+        // $soal = Soal::whereId($id)->first();
         $soal = Soal::find($id);
+        // dd($soal);
         return view('guru/soal/edit', compact('soal'));
     }
 

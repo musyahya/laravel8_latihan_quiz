@@ -2,6 +2,8 @@
 @section('title', 'Ganti Password')
 
 @section('content')
+    @include('adminlte/flash')
+
     <form action="/gantipassword" method="post">
         @csrf
         <input type="hidden" value="gantipassword" name="status">

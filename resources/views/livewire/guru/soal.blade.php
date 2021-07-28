@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-12">
 
+    @include('adminlte/flash')
     @include('guru/soal/hapus')
     
     <div class="row">

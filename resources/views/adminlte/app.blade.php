@@ -33,11 +33,11 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        @if(Session::has('sukses'))
+        {{-- @if(Session::has('sukses'))
             <div class="alert alert-success">
                 {{Session::get('sukses')}}
             </div>
-        @endif
+        @endif --}}
 
         @yield('content')
       </div><!-- /.container-fluid -->

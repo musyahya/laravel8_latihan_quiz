@@ -2,6 +2,8 @@
 @section('title', 'Profil')
 
 @section('content')
+    @include('adminlte/flash')
+
     <form action="/profil" method="post">
         @csrf
         <div class="form-group">
