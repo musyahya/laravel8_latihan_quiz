@@ -113,6 +113,12 @@ class SemuaMurid extends Component
         $this->format();
     }
 
+    public function lihat_quiz($id)
+    {
+        session(['murid_id' => $id]);
+        redirect('/murid_quiz');
+    }
+
     public function render()
     {
         if ($this->search) {

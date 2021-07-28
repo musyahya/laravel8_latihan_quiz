@@ -32,7 +32,7 @@
                 </li>
               <li class="nav-item">
                   <a href="/semua_murid" class="nav-link @yield('active-semua-murid')">
-                    <i class="fas fa-copy"></i>
+                    <i class="fas fa-users"></i>
                     <p>
                       Semua Murid
                     </p>

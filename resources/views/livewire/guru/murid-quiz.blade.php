@@ -1,14 +1,8 @@
 <div class="row">
     <div class="col-12">
 
-        @include('adminlte/flash')
-        @include('guru/semua_murid/tambah')
-        @include('guru/semua_murid/edit')
-        @include('guru/semua_murid/hapus')
-
         <div class="card">
             <div class="card-header">
-            <button wire:click="tambah" class="btn btn-sm btn-primary">Tambah</button>
 
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -24,27 +18,31 @@
             </div>
             <div class="card-body table-responsive">
 
-                @if ($murid->isNotEmpty())
+                @if ($quiz->isNotEmpty())
 
                     <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
                         <th>No</th>
-                        <th>Nama Murid</th>
-                        <th width="10%">Aksi</th>
+                        <th>Nama Quiz</th>
+                        <th>Benar</th>
+                        <th>Nilai</th>
+                        <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($murid as $item)
+                        @foreach ($quiz as $item)
                             <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{$item->name}}</td>
+                            <td>{{$item->nama}}</td>
+                            <td>{{$item->benar}} / {{\App\Models\Quiz::find($item->quiz_id)->soal->count()}}</td>
+                            <td>{{$item->nilai}} / 100</td>
                             <td>
-                                <div class="btn-group">
-                                    <button wire:click="lihat_quiz({{$item->id}})" class="btn btn-sm btn-info mr-2">Lihat Quiz</button>
-                                    <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-primary mr-2">Edit</button>
-                                    <button wire:click="hapus({{$item->id}})" class="btn btn-sm btn-danger">Hapus</button>
-                                </div>
+                                @if ($item->status == 1)
+                                    <span class="badge badge-success">Sudah Dikerjakan</span>    
+                                @else
+                                    <span class="badge badge-danger">Belum Dikerjakan</span>    
+                                @endif
                             </td>
                             </tr>
                         @endforeach
@@ -63,7 +61,7 @@
 
         </div>
         
-        {{$murid->links()}}
+        {{$quiz->links()}}
 
     </div>
 </div>
