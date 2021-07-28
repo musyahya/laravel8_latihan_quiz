@@ -15,7 +15,7 @@ class CreateSoalsTable extends Migration
     {
         Schema::create('soal', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('quiz_id');
+            $table->foreignId('quiz_id')->constrained('quiz')->onDelete('cascade');
             $table->text('soal');
             $table->text('pilihan_a');
             $table->text('pilihan_b');

@@ -15,7 +15,7 @@ class CreateQuizzesTable extends Migration
     {
         Schema::create('quiz', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('guru_id');
+            $table->foreignId('guru_id')->constrained('users')->onDelete('cascade');
             $table->string('nama');
             $table->enum('status', [0,1]);
             $table->timestamps();

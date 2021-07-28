@@ -40,22 +40,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/', CekRoleController::class);
 
-Route::middleware(['auth','role:guru'])->group(function () {
-    Route::get('/dashboard/guru', GuruDashboard::class);
-    Route::get('/quiz', GuruQuiz::class);
-
-    Route::resource('/soal', GuruSoal::class);
-
-    Route::get('/murid', MuridController::class);
-    Route::get('/semua_murid', SemuaMuridController::class);
-    Route::get('/murid_quiz', MuridQuizController::class);
-});
-
-Route::middleware(['auth','role:murid'])->group(function () {
+Route::middleware(['auth', 'role:murid'])->group(function () {
     Route::get('/dashboard/murid', MuridDashboard::class);
     Route::get('/quiz/murid', MuridQuiz::class);
     Route::get('/soal/murid', MuridSoal::class);
     Route::get('/lihat_jawaban', LihatJawabanController::class);
+});
+
+Route::middleware(['auth','role:guru'])->group(function () {
+    Route::get('/dashboard/guru', GuruDashboard::class);
+    Route::get('/quiz', GuruQuiz::class);
+    Route::resource('/soal', GuruSoal::class);
+    Route::get('/murid', MuridController::class);
+    Route::get('/semua_murid', SemuaMuridController::class);
+    Route::get('/murid_quiz', MuridQuizController::class);
 });
 
 Route::middleware(['auth'])->group(function () {
