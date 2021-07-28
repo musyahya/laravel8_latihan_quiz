@@ -20,10 +20,14 @@
                 </div>
                 <div class="card-body">
                     {{$item->soal}}
-                    {{-- {{$item->soal->quiz_jawaban_murid}} --}}
+                    {{-- {{$item->quiz_jawaban_murid->jawaban_murid}} --}}
+                    {{-- {{$item->quiz_jawaban_murid}} --}}
                 </div>
             </div>
-            <div  class="card {{($item->jawaban == 'pilihan_a') ? 'border border-success' : ''}}">
+            <div  class="card 
+            {{($item->quiz_jawaban_murid->jawaban_murid == 'pilihan_a' && $item->jawaban != 'pilihan_a') ? 'border border-danger' : ''}}
+            {{($item->jawaban == 'pilihan_a') ? 'border border-success' : ''}}
+            ">
                 <div class="card-header">
                     Pilihan A
                 </div>
@@ -31,7 +35,10 @@
                     {{$item->pilihan_a}}
                 </div>
             </div>
-            <div  class="card {{($item->jawaban == 'pilihan_b') ? 'border border-success' : ''}}">
+            <div  class="card 
+            {{($item->quiz_jawaban_murid->jawaban_murid == 'pilihan_b' && $item->jawaban != 'pilihan_b') ? 'border border-danger' : ''}}
+            {{($item->jawaban == 'pilihan_b') ? 'border border-success' : ''}}
+            ">
                 <div class="card-header">
                     Pilihan B
                 </div>
@@ -39,7 +46,10 @@
                     {{$item->pilihan_b}}
                 </div>
             </div>
-            <div  class="card {{($item->jawaban == 'pilihan_c') ? 'border border-success' : ''}}">
+            <div  class="card 
+            {{($item->quiz_jawaban_murid->jawaban_murid == 'pilihan_c' && $item->jawaban != 'pilihan_c') ? 'border border-danger' : ''}}
+            {{($item->jawaban == 'pilihan_c') ? 'border border-success' : ''}}
+            ">
                 <div class="card-header">
                     Pilihan C
                 </div>
@@ -47,7 +57,10 @@
                     {{$item->pilihan_c}}
                 </div>
             </div>
-            <div  class="card {{($item->jawaban == 'pilihan_d') ? 'border border-success' : ''}}">
+            <div  class="card 
+            {{($item->quiz_jawaban_murid->jawaban_murid == 'pilihan_d' && $item->jawaban != 'pilihan_d') ? 'border border-danger' : ''}}
+            {{($item->jawaban == 'pilihan_d') ? 'border border-success' : ''}}
+            ">
                 <div class="card-header">
                     Pilihan D
                 </div>
@@ -55,7 +68,10 @@
                     {{$item->pilihan_d}}
                 </div>
             </div>
-            <div  class="card {{($item->jawaban == 'pilihan_e') ? 'border border-success' : ''}}">
+            <div  class="card 
+            {{($item->quiz_jawaban_murid->jawaban_murid == 'pilihan_e' && $item->jawaban != 'pilihan_e') ? 'border border-danger' : ''}}
+            {{($item->jawaban == 'pilihan_e') ? 'border border-success' : ''}}
+            ">
                 <div class="card-header">
                     Pilihan E
                 </div>
