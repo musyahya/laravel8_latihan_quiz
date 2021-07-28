@@ -30,6 +30,14 @@
                     </p>
                   </a>
                 </li>
+              <li class="nav-item">
+                  <a href="/semua_murid" class="nav-link @yield('active-semua-murid')">
+                    <i class="fas fa-copy"></i>
+                    <p>
+                      Semua Murid
+                    </p>
+                  </a>
+                </li>
                 <li class="nav-item">
                   <a href="/kelompok_belajar" class="nav-link @yield('active-kelompok-belajar')">
                     <i class="fas fa-users"></i>
@@ -42,7 +50,7 @@
 
           @role('murid')
             <li class="nav-item">
-              <a href="/quiz/murid" class="nav-link @yield('active-kelompok-belajar')">
+              <a href="/quiz/murid" class="nav-link @yield('active-quiz')">
                 <i class="fas fa-users"></i>
                 <p>
                   Quiz

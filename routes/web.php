@@ -6,6 +6,7 @@ use App\Http\Controllers\Guru\KelompokBelajarController;
 use App\Http\Controllers\Guru\KelompokBelajarMuridController;
 use App\Http\Controllers\Guru\MuridController;
 use App\Http\Controllers\Guru\QuizController as GuruQuiz;
+use App\Http\Controllers\Guru\SemuaMuridController;
 use App\Http\Controllers\Guru\SoalController as GuruSoal;
 use App\Http\Controllers\Murid\DashboardController as MuridDashboard;
 use App\Http\Controllers\Murid\LihatJawabanController;
@@ -44,6 +45,7 @@ Route::middleware(['auth','role:guru'])->group(function () {
     Route::get('/quiz', GuruQuiz::class);
     Route::get('/soal', GuruSoal::class);
     Route::get('/murid', MuridController::class);
+    Route::get('/semua_murid', SemuaMuridController::class);
     Route::get('/kelompok_belajar', KelompokBelajarController::class);
     Route::get('/kelompok_belajar_murid', KelompokBelajarMuridController::class);
 });
