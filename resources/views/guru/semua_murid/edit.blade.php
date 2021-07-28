@@ -32,7 +32,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button wire:click="format" type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-              <button wire:click="update({{$user_id}})" type="button" class="btn btn-primary">Update</button>
+              <button wire:click="update({{$murid_id}})" type="button" class="btn btn-primary">Update</button>
             </div>
           </div>
         </div>

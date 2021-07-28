@@ -12,8 +12,8 @@ class SemuaMurid extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $tambah, $edit;
-    public $nama, $email, $password, $password_confirmation, $user_id;
+    public $tambah, $edit, $hapus;
+    public $nama, $email, $password, $password_confirmation, $murid_id;
 
     protected function rules()
     {
@@ -25,7 +25,7 @@ class SemuaMurid extends Component
         ];
 
         if ($this->edit) {
-            $murid = User::find($this->user_id);
+            $murid = User::find($this->murid_id);
             $data['email'] = ['required', 'email'];
             $data['password'] = [];
             $data['password_confirmation'] = [];
@@ -76,7 +76,7 @@ class SemuaMurid extends Component
 
         $this->nama = $user->name;
         $this->email = $user->email;
-        $this->user_id = $user->id;
+        $this->murid_id = $user->id;
     }
 
     public function update(User $user)
@@ -98,6 +98,21 @@ class SemuaMurid extends Component
         $this->format();
     }
 
+    public function hapus($id)
+    {
+        $this->hapus = true;
+        $this->murid_id = $id;
+    }
+
+    public function delete(User $user)
+    {
+        $user->delete();
+
+        $this->updatingSearch();
+        session()->flash('sukses', 'Data berhasil dihapus.');
+        $this->format();
+    }
+
     public function render()
     {
         $murid = User::role('murid')->paginate(5);
@@ -108,10 +123,12 @@ class SemuaMurid extends Component
     {
         $this->tambah = false;
         $this->edit = false;
+        $this->hapus = false;
 
         unset($this->nama);
         unset($this->email);
         unset($this->password);
         unset($this->password_confirmation);
+        unset($this->murid_id);
     }
 }
