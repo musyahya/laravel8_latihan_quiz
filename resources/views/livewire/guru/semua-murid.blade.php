@@ -2,7 +2,7 @@
     <div class="col-12">
 
         @include('adminlte/flash')
-        {{-- @include('guru/semua_murid/tambah') --}}
+        @include('guru/semua_murid/tambah')
         {{-- @include('guru/semua_murid/edit') --}}
         {{-- @include('guru/semua_murid/hapus') --}}
 
