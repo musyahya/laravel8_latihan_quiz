@@ -34,7 +34,7 @@
   </nav>
   <!-- /.navbar -->
 
-  <div class="modal fade" id="profil" tabindex="-1" aria-labelledby="profilLabel" aria-hidden="true">
+  <div class="modal fade @if ($errors->any()) show @endif" @if ($errors->any()) style="display: block; padding-left: 17px;" @endif id="profil" tabindex="-1" aria-labelledby="profilLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -50,16 +50,17 @@
                   <label for="nama">Nama</label>
                   <input type="text" class="form-control" id="nama" value="{{auth()->user()->name}}" name="nama">
                   @error('nama')
-                      <div class="alert alert-danger">{{ $message }}</div>
+                      <small class="text-danger">{{ $message }}</small>
                   @enderror
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
                   <input type="text" class="form-control" id="email" value="{{auth()->user()->email}}" name="email">
                   @error('email')
-                      <div class="alert alert-danger">{{ $message }}</div>
+                      <small class="text-danger">{{ $message }}</small>
                   @enderror
                 </div>
+                {{-- style="display: block; padding-left: 17px;" --}}
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
