@@ -3,6 +3,7 @@
 
         <div class="card">
             <div class="card-header">
+                {{\App\Models\User::find(session('murid_id'))->name}}
 
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
