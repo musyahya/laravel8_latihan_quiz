@@ -22,6 +22,7 @@ class DashboardController extends Controller
             ->join('quiz', 'quiz_murid.quiz_id', '=', 'quiz.id')
             ->where('quiz_murid.murid_id', auth()->id())
             ->where('quiz_murid.status', '1')
+            ->where('quiz.status', '1')
             ->select('quiz_murid.*', 'quiz.nama')
             ->count();
       
@@ -29,12 +30,14 @@ class DashboardController extends Controller
             ->join('quiz', 'quiz_murid.quiz_id', '=', 'quiz.id')
             ->where('quiz_murid.murid_id', auth()->id())
             ->where('quiz_murid.status', '0')
+            ->where('quiz.status', '1')
             ->select('quiz_murid.*', 'quiz.nama')
             ->count();
 
         $quiz_terbaru = DB::table('quiz_murid')
             ->join('quiz', 'quiz_murid.quiz_id', '=', 'quiz.id')
             ->where('quiz_murid.murid_id', auth()->id())
+            ->where('quiz.status', '1')
             ->select('quiz_murid.*', 'quiz.nama')
             ->limit(5)
             ->get();
