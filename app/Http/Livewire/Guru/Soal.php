@@ -45,8 +45,6 @@ class Soal extends Component
         } else {
             $soal_quiz = ModelsSoal::where('quiz_id', session('quiz_id'))->paginate(1);
         }
-
-        // dd($soal_quiz);
         
         return view('livewire.guru.soal', compact('soal_quiz'));
     }

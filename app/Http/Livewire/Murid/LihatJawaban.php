@@ -20,9 +20,6 @@ class LihatJawaban extends Component
     {
         $quiz = Quiz::find(session('quiz_id'));
         $soal = $quiz->soal()->paginate(1);
-        // dd($soal[0]->quiz_jawaban_murid);
-        // dd($soal[0]);
-        // dd($soal);
         return view('livewire.murid.lihat-jawaban', compact('soal'));
     }
 }
