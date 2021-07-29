@@ -15,6 +15,8 @@ class GantiPasswordController extends Controller
 
     public function update(Request $request)
     {
+        return redirect()->back()->with('gagal', 'Data tidak boleh diubah');
+
         $data = [
             'password' => ['required', Password::min(8), 'confirmed'],
             'password_confirmation' => ['required', Password::min(8)]

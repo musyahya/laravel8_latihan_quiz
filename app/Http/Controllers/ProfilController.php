@@ -14,6 +14,8 @@ class ProfilController extends Controller
 
     public function update(Request $request)
     {
+        return redirect()->back()->with('gagal', 'Data tidak boleh diubah');
+        
         $data = [
             'nama' => 'required',
             'email' => 'required|email',
