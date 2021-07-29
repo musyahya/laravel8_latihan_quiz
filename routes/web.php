@@ -30,9 +30,6 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
 //     return redirect('/login');
 // });
-Route::get('/asd', function () {
-    return view('asd');
-});
 
 Auth::routes();
 
