@@ -6,6 +6,7 @@ Laravel 8 Quiz dibaut oleh :
 
 - Github : <a href="https://github.com/musyahya"> Musyahya </a>
 - Youtube : <a href="https://www.youtube.com/channel/UC1iCvpMssrHnUsWKEe2cOag"> Musyahya </a>
+- Demo : <a href="http://whispering-plains-43344.herokuapp.com/"> Demo Program </a>
 
 ## Fitur 
 
